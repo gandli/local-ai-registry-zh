@@ -7,7 +7,7 @@ type HuggingFaceFields = {
 }
 
 function reasonText(reason: HuggingFaceFields["reason"]): string {
-  if (!reason) return "身份由模型库记录。"
+  if (!reason) return "仓库信息由模型库记录。"
   if (typeof reason === "string") return reason.replaceAll("-", " ")
   return `${reason.code.replaceAll("-", " ")}: ${reason.detail}`
 }
@@ -18,7 +18,7 @@ export function HuggingFaceCard({ identity, title = "Hugging Face 模型卡片" 
   return (
     <section aria-label={title} className="hf-card">
       <p className="eyebrow">{title}</p>
-      <h3>身份</h3>
+      <h3>模型仓库</h3>
       <a href={identity.url} rel="noreferrer" target="_blank">{identity.url}</a>
       <dl>
         <div><dt>仓库</dt><dd>{identity.repository ?? "非精确仓库匹配"}</dd></div>

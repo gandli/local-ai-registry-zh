@@ -59,7 +59,7 @@ export function RecordBody({
         <section className="record-sheet">
           <div className="record-sheet-heading">
             <h2>其余字段</h2>
-            <p>身份、启动、关联记录和实测速度已在上方展示，此处为标准化记录的其余字段。</p>
+            <p>上方已展示模型仓库、启动命令、关联记录和实测速度，这里列出原始记录的剩余字段。</p>
           </div>
           <RecordSheet record={tree} />
         </section>

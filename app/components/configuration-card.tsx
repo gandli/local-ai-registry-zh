@@ -184,11 +184,11 @@ export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
       </header>
       <dl>
         {config.image && <div><dt>镜像</dt><dd><code>{config.image}</code></dd></div>}
-        {config.digest && <div><dt>摘要</dt><dd><code>{config.digest}</code></dd></div>}
+        {config.digest && <div><dt>SHA256 摘要</dt><dd><code>{config.digest}</code></dd></div>}
         {config.composeFile && <div><dt>Compose 文件</dt><dd><code>{config.composeFile}</code></dd></div>}
         {config.ports && <div><dt>端口</dt><dd>{config.ports}</dd></div>}
         {config.endpoint && <div><dt>端点</dt><dd><code>{config.endpoint}</code></dd></div>}
-        {config.servedModelName && <div><dt>服务模型名</dt><dd><code>{config.servedModelName}</code></dd></div>}
+        {config.servedModelName && <div><dt>对外模型名</dt><dd><code>{config.servedModelName}</code></dd></div>}
         {config.sourceUrl && <div><dt>来源</dt><dd><a href={config.sourceUrl} rel="noreferrer" target="_blank">{config.sourceUrl}</a></dd></div>}
       </dl>
       {config.fidelity === "lossy" && (
@@ -256,7 +256,7 @@ export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
       )}
       {config.notes.length > 0 && (
         <div className="config-block">
-          <h4>来源备注</h4>
+          <h4>运行说明</h4>
           {config.notes.map((note, index) => <p key={index}>{note}</p>)}
         </div>
       )}

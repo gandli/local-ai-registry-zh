@@ -18,7 +18,7 @@ export function HardwareMarket({ hardwareId }: { hardwareId: string }) {
   if (market.length === 0) return null
   return (
     <section aria-label="当前市场价格" className="record-evidence">
-      <p className="eyebrow">当前市场</p>
+      <p className="eyebrow">市场价格</p>
       <p className="trust-note">
         各地区最新零售商报价，以当地货币显示。每行链接到底层观察记录（含零售商与直达链接）。CN 标价为美区报价按参考汇率换算的占位数据，非中国本地零售商实价。
       </p>

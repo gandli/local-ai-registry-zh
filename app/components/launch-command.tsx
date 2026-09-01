@@ -8,7 +8,7 @@ export function LaunchCommand({ recipe }: { recipe: Recipe }) {
   if (!command) return null
   return (
     <section aria-label="启动命令" className="record-evidence">
-      <p className="eyebrow">启动</p>
+      <p className="eyebrow">启动命令</p>
       <p className="trust-note">
         上述启动配置的精确还原：镜像按摘要锁定、模型版本固定、参数经过审计。命令自包含——所需资源从本模型库获取，挂载前按记录的 sha256 校验。也可用 <code>local-ai run {recipe.id}</code> 运行。
       </p>
