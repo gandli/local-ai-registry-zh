@@ -30,7 +30,7 @@ function numberField(record: Record<string, unknown>, key: string): number | nul
 }
 
 function formatTokens(value: number | null): string {
-  if (value === null) return "Unknown context"
+  if (value === null) return "上下文未知"
   if (value >= 1024) {
     const thousands = value / 1024
     return `${Number.isInteger(thousands) ? thousands : thousands.toFixed(1)}K`
@@ -65,7 +65,7 @@ function TaxonomyTags({ state, tags }: { state: URLSearchParams; tags: RowTag[] 
   return (
     <span className="taxonomy-tags">
       {tags.slice(0, 4).map((tag) => (
-        <Link aria-label={`Filter by ${tag.label}`} href={hrefWithFilter(state, tag.name, tag.value)} key={`${tag.name}:${tag.value}`}>
+        <Link aria-label={`按 ${tag.label} 筛选`} href={hrefWithFilter(state, tag.name, tag.value)} key={`${tag.name}:${tag.value}`}>
           {tag.label}
         </Link>
       ))}
@@ -110,10 +110,10 @@ export function RecipeRows({ by, data, state }: { by: "hardware" | "model"; data
         const validation = result.launchable ? "validated" : "candidate"
         const runtime = runtimeGroup(result.recipe.launch.kind)
         const tags: RowTag[] = [
-          { label: validation, name: "validation", value: validation },
+          { label: validation === "validated" ? "已验证" : "候选", name: "validation", value: validation },
           { label: result.recipe.engine.name, name: "engine", value: result.recipe.engine.name },
-          { label: runtime === "docker" ? "docker" : runtime === "native" ? "no docker" : "evidence", name: "runtime", value: runtime },
-          { label: result.speed_evidence.available ? "measured" : "unmeasured", name: "evidence", value: String(result.speed_evidence.available) },
+          { label: runtime === "docker" ? "docker" : runtime === "native" ? "无 docker" : "仅证据", name: "runtime", value: runtime },
+          { label: result.speed_evidence.available ? "已实测" : "未实测", name: "evidence", value: String(result.speed_evidence.available) },
           { label: `${result.hardware.memory.vram_gb} GB+`, name: "min_vram_gb", value: String(result.hardware.memory.vram_gb) },
         ]
         const hardware = (
@@ -125,7 +125,7 @@ export function RecipeRows({ by, data, state }: { by: "hardware" | "model"; data
         const model = (
           <span className={by === "model" ? "row-primary" : undefined}>
             <strong>{result.model.name}</strong>
-            <small>{result.model_instance.weights.precision ?? result.model_instance.weights.format ?? "Unknown precision"}</small>
+            <small>{result.model_instance.weights.precision ?? result.model_instance.weights.format ?? "精度未知"}</small>
           </span>
         )
         return (
@@ -133,7 +133,7 @@ export function RecipeRows({ by, data, state }: { by: "hardware" | "model"; data
             className="recipe-browser-row"
             href={recordHref("recipes", result.id)}
             key={result.id}
-            label={`Open ${result.model.name} recipe`}
+            label={`打开 ${result.model.name} 配方`}
             state={state}
             status={validation}
             tags={tags}
@@ -141,8 +141,8 @@ export function RecipeRows({ by, data, state }: { by: "hardware" | "model"; data
             {by === "hardware" ? hardware : model}
             {by === "hardware" ? model : hardware}
             <span><strong>{result.recipe.engine.name}</strong><small>{result.recipe.launch.kind}</small></span>
-            <span><strong>{formatTokens(context)}</strong><small>context</small></span>
-            <span><strong>{speed === null ? "—" : `${formatRate(speed)} tok/s`}</strong><small>{result.speed_evidence.available ? "measured" : "no evidence"}</small></span>
+            <span><strong>{formatTokens(context)}</strong><small>上下文</small></span>
+            <span><strong>{speed === null ? "—" : `${formatRate(speed)} tok/s`}</strong><small>{result.speed_evidence.available ? "已实测" : "无证据"}</small></span>
           </BrowserRow>
         )
       })}
@@ -168,15 +168,15 @@ export function PriceRows({ data, state }: { data: PriceResult[]; state: URLSear
             className="price-row"
             href={recordHref("prices", record.id)}
             key={record.id}
-            label={`Open ${record.product.name} market observations`}
+            label={`打开 ${record.product.name} 市场观察`}
             state={state}
             tags={tags}
           >
             <span className="row-primary"><strong>{record.product.name}</strong><small>{record.product.id}</small></span>
-            <span><strong>{amount === null ? "No available listing" : formatAmount(amount, record.region.currency)}</strong><small>lowest available · {condition}</small></span>
+            <span><strong>{amount === null ? "暂无在售" : formatAmount(amount, record.region.currency)}</strong><small>最低在售 · {condition}</small></span>
             <span><strong>{record.region.name}</strong><small>{record.region.currency}</small></span>
-            <span><strong>{record.observed_at.slice(0, 10)}</strong><small>observed</small></span>
-            <span><strong>{record.summary.listing_count} listings</strong><small>{record.summary.retailer_count} retailers</small></span>
+            <span><strong>{record.observed_at.slice(0, 10)}</strong><small>观察日期</small></span>
+            <span><strong>{record.summary.listing_count} 条在售</strong><small>{record.summary.retailer_count} 家零售商</small></span>
           </BrowserRow>
         )
       })}
@@ -194,22 +194,22 @@ export function HardwareRows({ data, state }: { data: Hardware[]; state: URLSear
           { label: hardware.vendor, name: "vendor", value: hardware.vendor },
           { label: hardware.accelerator_backend, name: "backend", value: hardware.accelerator_backend },
           { label: `${hardware.memory.vram_gb} GB+`, name: "min_vram_gb", value: String(hardware.memory.vram_gb) },
-          ...(hasPrices ? [{ label: "priced", name: "priced_only", value: "true" }] : []),
-          { label: recipes > 0 ? `${recipes} recipes` : "no recipes", name: "has_recipes", value: recipes > 0 ? "true" : "false" },
+          ...(hasPrices ? [{ label: "有报价", name: "priced_only", value: "true" }] : []),
+          { label: recipes > 0 ? `${recipes} 个配方` : "暂无配方", name: "has_recipes", value: recipes > 0 ? "true" : "false" },
         ]
         return (
           <BrowserRow
             className="collection-row"
             href={recordHref("hardware", hardware.id)}
             key={hardware.id}
-            label={`Open ${hardware.name}`}
+            label={`打开 ${hardware.name}`}
             state={state}
             tags={tags}
           >
             <span className="row-primary"><strong>{hardware.name}</strong><small>{hardware.id}</small></span>
             <span><strong>{hardware.vendor}</strong><small>{hardware.kind}</small></span>
-            <span><strong>{hardware.memory.vram_gb} GB</strong><small>{hardware.memory.vram_type ?? "Memory type unknown"}</small></span>
-            <span><strong>{recipes.toLocaleString()}</strong><small>{recipes === 1 ? "recipe" : "recipes"}</small></span>
+            <span><strong>{hardware.memory.vram_gb} GB</strong><small>{hardware.memory.vram_type ?? "内存类型未知"}</small></span>
+            <span><strong>{recipes.toLocaleString()}</strong><small>配方</small></span>
           </BrowserRow>
         )
       })}
@@ -230,15 +230,15 @@ export function ModelRows({ data, state }: { data: Model[]; state: URLSearchPara
             className="collection-row"
             href={recordHref("models", model.id)}
             key={model.id}
-            label={`Open ${model.name}`}
+            label={`打开 ${model.name}`}
             state={state}
             tags={tags}
           >
             <span className="row-primary"><strong>{model.name}</strong><small>{model.id}</small></span>
-            <span><strong>{model.family}</strong><small>family</small></span>
-            <span><strong>{model.architecture ?? "Unknown"}</strong><small>architecture</small></span>
-            <span><strong>{model.params ?? "—"}</strong><small>parameters</small></span>
-            <span><strong>{model.downloads?.last_30d != null ? model.downloads.last_30d.toLocaleString("en-US") : "—"}</strong><small>HF downloads / 30d</small></span>
+            <span><strong>{model.family}</strong><small>系列</small></span>
+            <span><strong>{model.architecture ?? "未知"}</strong><small>架构</small></span>
+            <span><strong>{model.params ?? "—"}</strong><small>参数量</small></span>
+            <span><strong>{model.downloads?.last_30d != null ? model.downloads.last_30d.toLocaleString("en-US") : "—"}</strong><small>HF 月下载</small></span>
           </BrowserRow>
         )
       })}
@@ -259,14 +259,14 @@ export function BenchmarkRows({ data, state }: { data: Benchmark[]; state: URLSe
             className="collection-row"
             href={recordHref("benchmark", benchmark.id)}
             key={benchmark.id}
-            label={`Open ${benchmark.id}`}
+            label={`打开 ${benchmark.id}`}
             state={state}
             tags={tags}
           >
             <span className="row-primary"><strong>{benchmark.name}</strong><small>{benchmark.id}</small></span>
-            <span><strong>{benchmark.category ?? "Unknown"}</strong><small>category</small></span>
-            <span><strong>{benchmark.rows.length}</strong><small>scored models</small></span>
-            <span><strong>{top ? (top.score === null ? "—" : formatRate(top.score)) : "—"}</strong><small>top score</small></span>
+            <span><strong>{benchmark.category ?? "未知"}</strong><small>类别</small></span>
+            <span><strong>{benchmark.rows.length}</strong><small>评分模型</small></span>
+            <span><strong>{top ? (top.score === null ? "—" : formatRate(top.score)) : "—"}</strong><small>最高分</small></span>
           </BrowserRow>
         )
       })}

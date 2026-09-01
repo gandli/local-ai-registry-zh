@@ -5,8 +5,8 @@ import type { RecordFact } from "@/app/lib/record-view"
 export function RecordFacts({ facts }: { facts: RecordFact[] }) {
   if (facts.length === 0) return null
   return (
-    <section aria-label="Record fields" className="record-facts">
-      <p className="eyebrow">Record</p>
+    <section aria-label="记录字段" className="record-facts">
+      <p className="eyebrow">记录</p>
       <dl>
         {facts.map((item) => (
           <div key={item.label}>

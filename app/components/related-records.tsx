@@ -5,8 +5,8 @@ import type { RelatedGroup } from "@/app/lib/record-view"
 export function RelatedRecords({ groups }: { groups: RelatedGroup[] }) {
   if (groups.length === 0) return null
   return (
-    <nav aria-label="Related records" className="related-records">
-      <p className="eyebrow">Related records</p>
+    <nav aria-label="关联记录" className="related-records">
+      <p className="eyebrow">关联记录</p>
       <dl>
         {groups.map((group) => (
           <div key={group.key}>
@@ -18,7 +18,7 @@ export function RelatedRecords({ groups }: { groups: RelatedGroup[] }) {
                 ))}
               </ul>
               {group.moreHref && (
-                <p><Link href={group.moreHref}>All {group.total.toLocaleString()} {group.label.toLowerCase()}</Link></p>
+                <p><Link href={group.moreHref}>全部 {group.total.toLocaleString()} 条</Link></p>
               )}
             </dd>
           </div>

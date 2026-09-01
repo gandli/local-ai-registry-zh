@@ -23,14 +23,14 @@ export type RelatedGroup = {
 const RELATED_CAP = 8
 
 const RELATION_LABELS: Record<string, string> = {
-  hardware: "Hardware",
-  model: "Model",
-  model_instance: "Artifact",
-  model_instances: "Artifacts",
-  prices: "Prices",
-  recipe: "Recipe",
-  recipes: "Recipes",
-  speed_sweep: "Speed sweeps",
+  hardware: "硬件",
+  model: "模型",
+  model_instance: "产物",
+  model_instances: "产物",
+  prices: "价格",
+  recipe: "配方",
+  recipes: "配方",
+  speed_sweep: "速度测试",
 }
 
 const TREE_OMIT = new Set([
@@ -127,7 +127,7 @@ function asObject(value: unknown): Record<string, unknown> | null {
 function fact(label: string, value: unknown, href?: string): RecordFact | null {
   if (value === null || value === undefined || value === "") return null
   if (typeof value === "number" && Number.isFinite(value)) return { label, value: value.toLocaleString(), href }
-  if (typeof value === "boolean") return { label, value: value ? "yes" : "no", href }
+  if (typeof value === "boolean") return { label, value: value ? "是" : "否", href }
   if (typeof value === "string") return { label, value, href }
   return null
 }
@@ -135,11 +135,12 @@ function fact(label: string, value: unknown, href?: string): RecordFact | null {
 function capabilityFacts(record: Record<string, unknown>): RecordFact[] {
   const capabilities = asObject(record.capabilities)
   if (!capabilities) return []
+  const labels: Record<string, string> = { chat: "对话", reasoning: "推理", tools: "工具", vision: "视觉" }
   return ["chat", "reasoning", "tools", "vision"].flatMap((key) => {
     const value = capabilities[key]
-    if (value === true) return [{ label: key, value: "yes" }]
-    if (value === false) return [{ label: key, value: "no" }]
-    return [{ label: key, value: "unknown" }]
+    if (value === true) return [{ label: labels[key] ?? key, value: "是" }]
+    if (value === false) return [{ label: labels[key] ?? key, value: "否" }]
+    return [{ label: labels[key] ?? key, value: "未知" }]
   })
 }
 
@@ -157,27 +158,27 @@ export function recordFacts(collection: string, record: Record<string, unknown>)
   const summary = asObject(record.summary)
   if (collection === "recipes") {
     return [
-      fact("Status", record.status),
-      fact("Source", record.recipe_source),
-      fact("Engine", engine?.name),
-      fact("Engine version", engine?.version),
-      fact("Graph", engine?.graph_mode),
-      fact("Accelerators", record.hardware_count),
-      fact("Tensor parallel", serving?.tensor_parallel),
-      fact("Context tokens", serving?.max_context_tokens),
-      fact("Max concurrency", serving?.max_concurrency),
-      fact("KV cache tokens", serving?.kv_cache_tokens),
+      fact("状态", record.status),
+      fact("来源", record.recipe_source),
+      fact("引擎", engine?.name),
+      fact("引擎版本", engine?.version),
+      fact("计算图", engine?.graph_mode),
+      fact("加速器数", record.hardware_count),
+      fact("张量并行", serving?.tensor_parallel),
+      fact("上下文长度", serving?.max_context_tokens),
+      fact("最大并发", serving?.max_concurrency),
+      fact("KV 缓存", serving?.kv_cache_tokens),
       ...capabilityFacts(record),
     ].filter((item): item is RecordFact => item !== null)
   }
   if (collection === "hardware") {
     return [
-      fact("Vendor", record.vendor),
-      fact("Kind", record.kind),
-      fact("Backend", record.accelerator_backend),
-      fact("VRAM", memory?.vram_gb === undefined ? null : `${memory.vram_gb} GB`),
-      fact("Memory type", memory?.vram_type),
-      fact("Bandwidth", (() => {
+      fact("厂商", record.vendor),
+      fact("类型", record.kind),
+      fact("后端", record.accelerator_backend),
+      fact("显存", memory?.vram_gb === undefined ? null : `${memory.vram_gb} GB`),
+      fact("内存类型", memory?.vram_type),
+      fact("带宽", (() => {
         const bandwidth = memory?.bandwidth_gb_per_s
         if (bandwidth === undefined || bandwidth === null) return null
         if (typeof bandwidth === "object") {
@@ -192,43 +193,43 @@ export function recordFacts(collection: string, record: Record<string, unknown>)
     const downloads = asObject(record.downloads)
     const monthly = typeof downloads?.last_30d === "number" ? downloads.last_30d.toLocaleString("en-US") : null
     return [
-      fact("Family", record.family),
-      fact("Architecture", record.architecture),
-      fact("Parameters", record.params),
-      fact("Active parameters", record.active_params),
-      fact("HF downloads / 30d", monthly),
+      fact("系列", record.family),
+      fact("架构", record.architecture),
+      fact("参数量", record.params),
+      fact("激活参数量", record.active_params),
+      fact("HF 月下载量", monthly),
     ].filter((item): item is RecordFact => item !== null)
   }
   if (collection === "model-instances") {
     return [
-      fact("Repository", record.repository),
-      fact("Revision", record.revision),
-      fact("Precision", weights?.precision),
-      fact("Format", weights?.format),
+      fact("仓库", record.repository),
+      fact("版本", record.revision),
+      fact("精度", weights?.precision),
+      fact("格式", weights?.format),
     ].filter((item): item is RecordFact => item !== null)
   }
   if (collection === "prices") {
     return [
-      fact("Product", product?.name),
-      fact("Region", region?.name ?? region?.code),
-      fact("Currency", region?.currency),
-      fact("Listings", summary?.listing_count),
+      fact("产品", product?.name),
+      fact("区域", region?.name ?? region?.code),
+      fact("货币", region?.currency),
+      fact("条目数", summary?.listing_count),
     ].filter((item): item is RecordFact => item !== null)
   }
   if (collection === "speed-sweep") {
     const rows = Array.isArray(record.rows) ? record.rows.length : null
     return [
-      fact("Recipe", record.recipe_id, typeof record.recipe_id === "string" ? `/recipes/${record.recipe_id}` : undefined),
-      fact("Measured", record.measured_at),
-      fact("Accepted", record.accepted_at),
-      fact("Points", rows),
+      fact("配方", record.recipe_id, typeof record.recipe_id === "string" ? `/recipes/${record.recipe_id}` : undefined),
+      fact("测量于", record.measured_at),
+      fact("接受于", record.accepted_at),
+      fact("数据点数", rows),
     ].filter((item): item is RecordFact => item !== null)
   }
   if (collection === "benchmark") {
     const rows = Array.isArray(record.rows) ? record.rows.length : null
     return [
-      fact("Category", record.category),
-      fact("Scored models", rows),
+      fact("类别", record.category),
+      fact("评分模型数", rows),
     ].filter((item): item is RecordFact => item !== null)
   }
   return []
@@ -240,15 +241,15 @@ export function copyItems(collection: string, record: Record<string, unknown>): 
   if (id) {
     items.push({ label: "ID", value: id })
     items.push({ label: "JSON API", value: `/api/v1/${collection}/${id}` })
-    items.push({ label: "Record URL", value: `/${collection}/${id}` })
+    items.push({ label: "记录 URL", value: `/${collection}/${id}` })
   }
   const hub = huggingFaceIdentity(record)
-  if (hub?.status === "known" && hub.url) items.push({ label: "Hub repository", value: hub.url })
-  if (typeof record.revision === "string" && record.revision) items.push({ label: "Revision", value: record.revision })
+  if (hub?.status === "known" && hub.url) items.push({ label: "Hub 仓库", value: hub.url })
+  if (typeof record.revision === "string" && record.revision) items.push({ label: "版本", value: record.revision })
   if (recipeIsLaunchable(record)) {
     const launch = asObject(record.launch)
     const args = Array.isArray(launch?.arguments) ? launch.arguments.filter((item): item is string => typeof item === "string") : []
-    if (args.length > 0) items.push({ label: "Launch arguments", value: args.join(" ") })
+    if (args.length > 0) items.push({ label: "启动参数", value: args.join(" ") })
   }
   return items
 }

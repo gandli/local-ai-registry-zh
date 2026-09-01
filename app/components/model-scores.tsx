@@ -11,21 +11,20 @@ export function ModelScores({ modelId }: { modelId: string }) {
       left.benchmark_id.localeCompare(right.benchmark_id),
   )
   return (
-    <section aria-label="Public leaderboard scores" className="record-evidence">
-      <p className="eyebrow">Leaderboard scores</p>
+    <section aria-label="公开排行榜分数" className="record-evidence">
+      <p className="eyebrow">排行榜分数</p>
       <p className="trust-note">
-        Scraped public quality scores joined to this model by its Hugging Face repository. They describe the listed
-        variant, not any specific local quantization, and are never speed measurements.
+        通过 Hugging Face 仓库关联到该模型的公开质量分数抓取结果。分数描述所列变体本身，而非任何本地量化版本，且从不表示速度测量。
       </p>
       <table className="flag-table">
         <thead>
           <tr>
-            <th>Benchmark</th>
-            <th>Category</th>
-            <th>Score</th>
-            <th>Rank</th>
-            <th>Scored variant</th>
-            <th>Confidence</th>
+            <th>基准</th>
+            <th>类别</th>
+            <th>分数</th>
+            <th>排名</th>
+            <th>评分变体</th>
+            <th>置信度</th>
           </tr>
         </thead>
         <tbody>

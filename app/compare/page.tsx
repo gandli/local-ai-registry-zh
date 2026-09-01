@@ -6,20 +6,20 @@ import { hardwareComparison, type HardwareComparisonRow } from "@/lib/registry"
 
 export const dynamic = "force-dynamic"
 
-export const metadata: Metadata = { title: "Compare hardware · Local AI Registry" }
+export const metadata: Metadata = { title: "硬件对比 · 本地 AI 模型登记簿" }
 
 type SortKey = "name" | "vram" | "bandwidth" | "fp16" | "fp8" | "fp4" | "int8" | "price" | "recipes"
 
 const COLUMNS: Array<{ key: SortKey; label: string }> = [
-  { key: "name", label: "Hardware" },
-  { key: "vram", label: "VRAM" },
-  { key: "bandwidth", label: "Bandwidth" },
+  { key: "name", label: "硬件" },
+  { key: "vram", label: "显存" },
+  { key: "bandwidth", label: "带宽" },
   { key: "fp16", label: "FP16 TFLOPS" },
   { key: "fp8", label: "FP8 TFLOPS" },
   { key: "fp4", label: "FP4 TFLOPS" },
   { key: "int8", label: "INT8 TOPS" },
-  { key: "price", label: "Lowest new (US)" },
-  { key: "recipes", label: "Recipes" },
+  { key: "price", label: "最低全新（美元）" },
+  { key: "recipes", label: "配方数" },
 ]
 
 function metric(row: HardwareComparisonRow, key: SortKey): number | string | null {
@@ -68,18 +68,16 @@ export default async function ComparePage({ searchParams }: { searchParams: Prom
       <CollectionNav current="hardware" />
       <header className="topic-heading">
         <div>
-          <span className="mono-label">COLLECTION / COMPARE</span>
-          <h1>Compare hardware</h1>
+          <span className="mono-label">分类 / 对比</span>
+          <h1>硬件对比</h1>
           <p className="topic-description">
-            Every accelerator side by side: memory, vendor-published throughput, the lowest live US listing, and how
-            many launch recipes the registry holds. Click a column to rank by it; * marks structured-sparsity figures
-            where the vendor publishes no dense number.
+            所有加速器横向对比：显存、厂商公布的算力、最低在售美元报价，以及登记簿收录的启动配方数量。点击列标题即可按该项排序；* 表示厂商仅公开结构化稀疏算力、未公开稠密数值。
           </p>
         </div>
-        <span className="topic-total">{rows.length.toLocaleString("en-US")} devices</span>
+        <span className="topic-total">{rows.length.toLocaleString("en-US")} 台设备</span>
       </header>
       <nav aria-label="Vendor filter" className="breadcrumbs">
-        <Link href={`/compare?sort=${sort}`}>{vendorParam ? "all vendors" : "· all vendors"}</Link>
+        <Link href={`/compare?sort=${sort}`}>{vendorParam ? "全部厂商" : "· 全部厂商"}</Link>
         {vendors.map((vendor) => (
           <Link href={`/compare?sort=${sort}&vendor=${vendor}`} key={vendor}>{vendorParam === vendor ? `· ${vendor}` : vendor}</Link>
         ))}

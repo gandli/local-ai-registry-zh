@@ -15,13 +15,13 @@ export function CopyActions({ items }: { items: CopyItem[] }) {
   }
 
   return (
-    <div className="copy-actions" aria-label="Copy record fields">
+    <div className="copy-actions" aria-label="复制记录字段">
       {items.map((item) => (
         <button key={item.label} onClick={() => copy(item)} type="button">
-          Copy {item.label.toLowerCase()}
+          复制{item.label}
         </button>
       ))}
-      <span className="copy-status" aria-live="polite">{copied ? `Copied ${copied.toLowerCase()}` : ""}</span>
+      <span className="copy-status" aria-live="polite">{copied ? `已复制 ${copied}` : ""}</span>
     </div>
   )
 }

@@ -24,8 +24,8 @@ function isScalar(value: unknown): boolean {
 }
 
 function Scalar({ value }: { value: unknown }): ReactNode {
-  if (value === null || value === undefined || value === "") return <span className="unknown">Unknown</span>
-  if (typeof value === "boolean") return <span>{value ? "Yes" : "No"}</span>
+  if (value === null || value === undefined || value === "") return <span className="unknown">未知</span>
+  if (typeof value === "boolean") return <span>{value ? "是" : "否"}</span>
   if (typeof value === "number") return <span>{value.toLocaleString("en-US")}</span>
   const text = String(value)
   if (/^https?:\/\//.test(text)) {
@@ -134,7 +134,7 @@ function Cell({ value }: { value: unknown }): ReactNode {
   if (isScalar(value)) return <Scalar value={value} />
   if (Array.isArray(value)) {
     if (value.every(isScalar)) return <span>{value.join(", ")}</span>
-    return <span className="unknown">{value.length} entries</span>
+    return <span className="unknown">{value.length} 条记录</span>
   }
   const entry = value as Record<string, unknown>
   if (typeof entry.code === "string") {
@@ -144,7 +144,7 @@ function Cell({ value }: { value: unknown }): ReactNode {
   if (pairs.length <= 3 && pairs.every(([, item]) => isScalar(item))) {
     return <span>{pairs.map(([key, item]) => `${label(key)} ${typeof item === "number" ? item.toLocaleString("en-US") : String(item ?? "—")}`).join(" · ")}</span>
   }
-  return <span className="unknown">{pairs.length} fields</span>
+  return <span className="unknown">{pairs.length} 个字段</span>
 }
 
 function SheetTable({ caption, rows }: { caption: string; rows: Record<string, unknown>[] }) {
@@ -179,7 +179,7 @@ function QuietBlock({ items }: { items: Row[] }) {
   if (items.length === 0) return null
   return (
     <details className="sheet-quiet">
-      <summary>Provenance &amp; metadata ({items.length})</summary>
+      <summary>来源与元数据（{items.length}）</summary>
       <div className="sheet-quiet-body">
         {items.map((item) => {
           const value = item.value

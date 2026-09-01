@@ -23,7 +23,7 @@ html {
 }
 
 body {
-  --font-sans: var(--font-geist-sans), "Helvetica Neue", sans-serif;
+  --font-sans: var(--font-geist-sans), "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
   --font-mono: var(--font-geist-mono), "SFMono-Regular", monospace;
   min-width: 320px;
   margin: 0;

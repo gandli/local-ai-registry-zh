@@ -44,8 +44,8 @@ export function RecordBody({
         <>
           <p className="trust-note">
             {recipeIsLaunchable(record)
-              ? "Validated: pinned artifact, pinned runtime, and accepted evidence. This is a launch contract."
-              : "Candidate: useful compatibility or speed evidence. The registry does not offer Run until promotion requirements are met."}
+              ? "已验证：产物版本、运行时镜像均已固定，证据已接受。这是一份可执行启动契约。"
+              : "候选：有兼容性或速度证据，但登记簿在满足推广要求前不提供运行操作。"}
           </p>
           <ConfigurationCard config={config} />
           <LaunchCommand recipe={record as never} />
@@ -58,8 +58,8 @@ export function RecordBody({
       {variant === "page" ? (
         <section className="record-sheet">
           <div className="record-sheet-heading">
-            <h2>Remaining fields</h2>
-            <p>Identity, launch, related records, and measured speed are shown above. This is the rest of the normalized record.</p>
+            <h2>其余字段</h2>
+            <p>身份、启动、关联记录和实测速度已在上方展示，此处为标准化记录的剩余部分。</p>
           </div>
           <RecordSheet record={tree} />
         </section>

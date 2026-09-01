@@ -57,7 +57,7 @@ function evidenceFromRecord(record: Record<string, unknown>): EvidenceRow[] {
 function benchmarkRows(record: Record<string, unknown>): Array<{ key: string; model: string; score: string }> {
   return asRows(record.rows).slice(0, 24).map((row, index) => ({
     key: `${String(row.root ?? row.model ?? index)}:${index}`,
-    model: String(row.root ?? row.model ?? row.name ?? "Unknown"),
+    model: String(row.root ?? row.model ?? row.name ?? "未知"),
     score: number(row.score) === null ? "—" : String(number(row.score)),
   }))
 }
@@ -67,10 +67,10 @@ export function RecordEvidence({ collection, record }: { collection: string; rec
     const rows = benchmarkRows(record)
     if (rows.length === 0) return null
     return (
-      <section aria-label="Leaderboard scores" className="record-evidence">
-        <p className="eyebrow">Scores</p>
+      <section aria-label="排行榜分数" className="record-evidence">
+        <p className="eyebrow">分数</p>
         <table className="flag-table">
-          <thead><tr><th>Model</th><th>Score</th></tr></thead>
+          <thead><tr><th>模型</th><th>分数</th></tr></thead>
           <tbody>
             {rows.map((row) => (
               <tr key={row.key}><td>{row.model}</td><td>{row.score}</td></tr>
@@ -85,18 +85,18 @@ export function RecordEvidence({ collection, record }: { collection: string; rec
   const rows = evidenceFromRecord(record)
   if (rows.length === 0) return null
   return (
-    <section aria-label="Measured speed" className="record-evidence">
-      <p className="eyebrow">Measured speed</p>
+    <section aria-label="实测速度" className="record-evidence">
+      <p className="eyebrow">实测速度</p>
       <table className="flag-table">
         <thead>
           <tr>
-            <th>Concurrency</th>
-            <th>Context</th>
-            <th>Prefill</th>
-            <th>Decode</th>
-            <th>TTFT ms</th>
-            <th>Status</th>
-            {collection === "recipes" && <th>Sweep</th>}
+            <th>并发</th>
+            <th>上下文</th>
+            <th>预填充</th>
+            <th>解码</th>
+            <th>首字延迟 ms</th>
+            <th>状态</th>
+            {collection === "recipes" && <th>测试</th>}
           </tr>
         </thead>
         <tbody>
