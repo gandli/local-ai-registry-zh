@@ -12,6 +12,7 @@ import { RecordBody } from "@/app/components/record-body"
 import { ModalCloseButton, RecordModal } from "@/app/components/record-modal"
 import { RegistrySearch, type SearchFilter } from "@/app/components/registry-search"
 import {
+  REGION_LABELS,
   TOPIC_FILTERS,
   TOPICS,
   isTopic,
@@ -171,7 +172,7 @@ export default async function Home({ searchParams }: PageProps) {
           ]
         : topic === "prices"
           ? [
-              { label: "区域", name: "region", value: value("region"), options: facetOptions(facets.prices.region, "任意区域") },
+              { label: "区域", name: "region", value: value("region"), options: facetOptions(facets.prices.region, "任意区域", (item) => REGION_LABELS[String(item)] ?? String(item)) },
               { label: "类别", name: "category", value: value("category"), options: facetOptions(facets.prices.category, "任意类别") },
               { label: "成色", name: "condition", value: value("condition"), options: facetOptions(facets.prices.condition, "任意成色") },
               { label: "零售商", name: "retailer", value: value("retailer"), options: facetOptions(facets.prices.retailer, "任意零售商") },

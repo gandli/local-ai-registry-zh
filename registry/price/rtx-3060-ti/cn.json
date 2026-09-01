@@ -1,0 +1,52 @@
+{
+  "hardware": [
+    {
+      "id": "rtx-3060-ti-8gb",
+      "match_scope": "family"
+    }
+  ],
+  "id": "rtx-3060-ti--cn",
+  "observations": [
+    {
+      "amount": 1867,
+      "condition": "refurbished",
+      "currency": "CNY",
+      "in_stock": null,
+      "observed_at": "2026-08-31T12:11:03Z",
+      "quantity": null,
+      "retailer": "参考换算 · microcenter",
+      "title": "GeForce RTX 3060 Ti Founders Edition Dual-Fan 8GB GDDR6 PCIe 4.0 Graphics Card (Refurbished)（参考换算，待中国零售商直采）",
+      "url": "https://www.microcenter.com/product/672329"
+    }
+  ],
+  "observed_at": "2026-08-31T12:11:03Z",
+  "product": {
+    "category": "gpu",
+    "id": "rtx-3060-ti",
+    "name": "RTX 3060 ti"
+  },
+  "provenance": {
+    "scanner": "https://github.com/openai/codex",
+    "snapshot_generated_at": "2026-08-31T16:20:00Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 0,
+    "listing_count": 1,
+    "lowest_new": null,
+    "lowest_refurbished": 1867,
+    "lowest_used": null,
+    "retailer_count": 1
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}

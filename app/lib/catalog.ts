@@ -1,3 +1,5 @@
+export const REGION_LABELS: Record<string, string> = { CN: "中国大陆", DE: "德国", GB: "英国", JP: "日本", PL: "波兰", US: "美国" }
+
 export type Topic = "recipes" | "hardware" | "models" | "prices" | "benchmark"
 
 export type TopicSpec = {

@@ -1,0 +1,52 @@
+{
+  "hardware": [
+    {
+      "id": "rtx-4000-ada-20gb",
+      "match_scope": "family"
+    }
+  ],
+  "id": "rtx-4000-ada--cn",
+  "observations": [
+    {
+      "amount": 14360,
+      "condition": "refurbished",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:11:03Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "Refurbished NVIDIA RTX 4000 ADA Generation 20GB GDDR6 PCIe 4.0 GPU Card Advanced Processing Without Bracket（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/p/pl?SortType=2&d=rtx+4000+ada"
+    }
+  ],
+  "observed_at": "2026-08-31T12:11:03Z",
+  "product": {
+    "category": "gpu",
+    "id": "rtx-4000-ada",
+    "name": "RTX 4000 ada"
+  },
+  "provenance": {
+    "scanner": "https://github.com/openai/codex",
+    "snapshot_generated_at": "2026-08-31T16:20:00Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 1,
+    "listing_count": 1,
+    "lowest_new": null,
+    "lowest_refurbished": 14360,
+    "lowest_used": null,
+    "retailer_count": 1
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}

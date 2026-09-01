@@ -1,10 +1,12 @@
 import Link from "next/link"
 
+import { REGION_LABELS } from "@/app/lib/catalog"
 import { getHardwareMarket } from "@/lib/registry"
 
 function money(amount: number | null, currency: string): string {
   if (amount === null) return "—"
-  return `${currency} ${amount.toLocaleString("en-US", { maximumFractionDigits: 0 })}`
+  const symbol = { CNY: "¥", USD: "$", EUR: "€", GBP: "£", JPY: "¥", PLN: "zł " }[currency] ?? `${currency} `
+  return `${symbol}${amount.toLocaleString("zh-CN", { maximumFractionDigits: 0 })}`
 }
 
 function day(value: string): string {
@@ -34,7 +36,7 @@ export function HardwareMarket({ hardwareId }: { hardwareId: string }) {
         <tbody>
           {market.map((row) => (
             <tr key={row.record_id}>
-              <td><Link href={`/prices/${row.record_id}`}>{row.region}</Link></td>
+              <td><Link href={`/prices/${row.record_id}`}>{REGION_LABELS[row.region] ?? row.region}</Link></td>
               <td>{money(row.lowest_new, row.currency)}</td>
               <td>{money(row.lowest_refurbished, row.currency)}</td>
               <td>{money(row.lowest_used, row.currency)}</td>

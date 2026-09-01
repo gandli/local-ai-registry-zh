@@ -1,0 +1,71 @@
+{
+  "hardware": [
+    {
+      "id": "apple-m5-pro-24gb",
+      "match_scope": "family"
+    },
+    {
+      "id": "apple-m5-pro-48gb",
+      "match_scope": "family"
+    },
+    {
+      "id": "apple-m5-pro-64gb",
+      "match_scope": "family"
+    }
+  ],
+  "id": "macbook-pro-m5-pro--cn",
+  "observations": [
+    {
+      "amount": 17943,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-27T11:28:59.876Z",
+      "quantity": null,
+      "retailer": "参考换算 · apple-store",
+      "title": "MacBook Pro M5 Pro (m5pro-15-16)（参考换算，待中国零售商直采）",
+      "url": "https://www.apple.com/shop/buy-mac/macbook-pro"
+    },
+    {
+      "amount": 19379,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-27T11:28:59.876Z",
+      "quantity": null,
+      "retailer": "参考换算 · apple-store",
+      "title": "MacBook Pro M5 Pro (m5pro-18-20)（参考换算，待中国零售商直采）",
+      "url": "https://www.apple.com/shop/buy-mac/macbook-pro"
+    }
+  ],
+  "observed_at": "2026-08-27T11:28:59.876Z",
+  "product": {
+    "category": "apple",
+    "id": "macbook-pro-m5-pro",
+    "name": "MacBook Pro M5 Pro"
+  },
+  "provenance": {
+    "scanner": "https://github.com/0xSero/local-ai-scanner-cli",
+    "snapshot_generated_at": "2026-08-27T11:32:26.483Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 2,
+    "listing_count": 2,
+    "lowest_new": 17943,
+    "lowest_refurbished": null,
+    "lowest_used": null,
+    "retailer_count": 1
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}

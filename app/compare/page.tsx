@@ -18,7 +18,7 @@ const COLUMNS: Array<{ key: SortKey; label: string }> = [
   { key: "fp8", label: "FP8 TFLOPS" },
   { key: "fp4", label: "FP4 TFLOPS" },
   { key: "int8", label: "INT8 TOPS" },
-  { key: "price", label: "最低全新（美元）" },
+  { key: "price", label: "最低全新" },
   { key: "recipes", label: "部署方案数" },
 ]
 
@@ -30,7 +30,7 @@ function metric(row: HardwareComparisonRow, key: SortKey): number | string | nul
   if (key === "fp8") return row.fp8_tflops
   if (key === "fp4") return row.fp4_tflops
   if (key === "int8") return row.int8_tflops
-  if (key === "price") return row.lowest_new_usd
+  if (key === "price") return row.lowest_new
   return row.recipe_count
 }
 
@@ -71,7 +71,7 @@ export default async function ComparePage({ searchParams }: { searchParams: Prom
           <span className="mono-label">分类 / 对比</span>
           <h1>硬件对比</h1>
           <p className="topic-description">
-            所有加速器横向对比：显存、厂商公布的算力、最低在售美元报价，以及模型库收录的部署方案数量。点击列标题即可按该项排序；* 表示厂商仅公开结构化稀疏算力、未公开稠密数值。
+            所有加速器横向对比：显存、厂商公布的算力、最低在售报价（中国大陆优先，人民币；缺则美元），以及模型库收录的部署方案数量。点击列标题即可按该项排序；* 表示厂商仅公开结构化稀疏算力、未公开稠密数值。
           </p>
         </div>
         <span className="topic-total">{rows.length.toLocaleString("en-US")} 台设备</span>
@@ -103,7 +103,7 @@ export default async function ComparePage({ searchParams }: { searchParams: Prom
                 <td>{cell(row.fp8_tflops, row.fp8_sparse)}</td>
                 <td>{cell(row.fp4_tflops, row.fp4_sparse)}</td>
                 <td>{cell(row.int8_tflops, row.int8_sparse)}</td>
-                <td>{row.lowest_new_usd === null ? "—" : `$${row.lowest_new_usd.toLocaleString("en-US", { maximumFractionDigits: 0 })}`}</td>
+                <td>{row.lowest_new === null ? "—" : `${row.price_currency === "CNY" ? "¥" : "$"}${row.lowest_new.toLocaleString("zh-CN", { maximumFractionDigits: 0 })}`}</td>
                 <td>{row.recipe_count.toLocaleString("en-US")}</td>
               </tr>
             ))}

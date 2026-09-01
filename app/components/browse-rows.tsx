@@ -18,11 +18,25 @@ export type RowTag = {
   value: string
 }
 
+const CNY_RATE = 7.18
+const CNY_FORMATTER = new Intl.NumberFormat("zh-CN", {
+  currency: "CNY",
+  maximumFractionDigits: 0,
+  style: "currency",
+})
 const USD_FORMATTER = new Intl.NumberFormat("en-US", {
   currency: "USD",
   maximumFractionDigits: 0,
   style: "currency",
 })
+
+function formatCnyUsd(amount: number, currency: string): { amount: string; title: string } {
+  if (currency === "USD") {
+    const cny = Math.round(amount * CNY_RATE)
+    return { amount: CNY_FORMATTER.format(cny), title: `${USD_FORMATTER.format(amount)} · 参考汇率 1 USD ≈ ${CNY_RATE} CNY，数据货币为 USD` }
+  }
+  return { amount: formatAmount(amount, currency), title: "" }
+}
 
 function numberField(record: Record<string, unknown>, key: string): number | null {
   const value = record[key]
@@ -31,19 +45,26 @@ function numberField(record: Record<string, unknown>, key: string): number | nul
 
 function formatTokens(value: number | null): string {
   if (value === null) return "上下文未知"
+  if (value >= 10000) return `约 ${(value / 10000).toFixed(value % 10000 === 0 ? 0 : 1)} 万 tokens`
   if (value >= 1024) {
     const thousands = value / 1024
-    return `${Number.isInteger(thousands) ? thousands : thousands.toFixed(1)}K`
+    return `${Number.isInteger(thousands) ? thousands : thousands.toFixed(1)}K tokens`
   }
-  return value.toLocaleString()
+  return `${value.toLocaleString("zh-CN")} tokens`
 }
 
 function formatRate(value: number): string {
-  return value.toLocaleString(undefined, { maximumFractionDigits: 1 })
+  return `${value.toLocaleString("zh-CN", { maximumFractionDigits: 1 })} tok/s`
+}
+
+function formatWan(value: number): string {
+  return value >= 10000 ? `约 ${(value / 10000).toFixed(value % 10000 === 0 ? 0 : 1)} 万` : value.toLocaleString("zh-CN")
 }
 
 function formatAmount(amount: number, currency: string): string {
-  return currency === "USD" ? USD_FORMATTER.format(amount) : `${currency} ${amount.toLocaleString()}`
+  if (currency === "USD") return USD_FORMATTER.format(amount)
+  if (currency === "CNY") return CNY_FORMATTER.format(amount)
+  return `${currency} ${amount.toLocaleString("zh-CN")}`
 }
 
 function peakSpeed(rows: Array<{ decode_tok_s_per_stream?: number | null; decode_tok_s?: number | null; prefill_tok_s?: number | null }>): number | null {
@@ -147,7 +168,7 @@ export function RecipeRows({ by, data, state }: { by: "hardware" | "model"; data
             {by === "hardware" ? model : hardware}
             <span><strong>{result.recipe.engine.name}</strong><small>{result.recipe.launch.kind}</small></span>
             <span><strong>{formatTokens(context)}</strong><small>上下文</small></span>
-            <span><strong>{speed === null ? "—" : `${formatRate(speed)} tok/s`}</strong><small>{result.speed_evidence.available ? "已实测" : "无证据"}</small></span>
+            <span><strong>{speed === null ? "—" : formatRate(speed)}</strong><small>{result.speed_evidence.available ? "已实测" : "无证据"}</small></span>
           </BrowserRow>
         )
       })}
@@ -179,10 +200,10 @@ export function PriceRows({ data, state }: { data: PriceResult[]; state: URLSear
             tags={tags}
           >
             <span className="row-primary"><strong>{record.product.name}</strong><small>{record.product.id}</small></span>
-            <span><strong>{amount === null ? "暂无在售" : formatAmount(amount, record.region.currency)}</strong><small>最低在售 · {condition}</small></span>
+            <span><strong>{amount === null ? "暂无在售" : formatCnyUsd(amount, record.region.currency).amount}</strong><small title={amount === null ? undefined : formatCnyUsd(amount, record.region.currency).title}>最低在售 · {condition}</small></span>
             <span><strong>{record.region.name}</strong><small>{record.region.currency}</small></span>
             <span><strong>{record.observed_at.slice(0, 10)}</strong><small>观察日期</small></span>
-            <span><strong>{record.summary.listing_count} 条在售</strong><small>{record.summary.retailer_count} 家零售商</small></span>
+            <span><strong>{record.summary.listing_count.toLocaleString("zh-CN")} 条在售</strong><small>{record.summary.retailer_count} 家零售商</small></span>
           </BrowserRow>
         )
       })}
@@ -216,7 +237,7 @@ export function HardwareRows({ data, state }: { data: Hardware[]; state: URLSear
             <span className="row-primary"><strong>{hardware.name}</strong><small>{hardware.id}</small></span>
             <span><strong>{hardware.vendor}</strong><small>{hardware.kind}</small></span>
             <span><strong>{hardware.memory.vram_gb} GB</strong><small>{hardware.memory.vram_type ?? "内存类型未知"}</small></span>
-            <span><strong>{recipes.toLocaleString()}</strong><small>部署方案</small></span>
+            <span><strong>{recipes.toLocaleString("zh-CN")}</strong><small>部署方案</small></span>
           </BrowserRow>
         )
       })}
@@ -246,7 +267,7 @@ export function ModelRows({ data, state }: { data: Model[]; state: URLSearchPara
             <span><strong>{model.family}</strong><small>系列</small></span>
             <span><strong>{model.architecture ?? "未知"}</strong><small>架构</small></span>
             <span><strong>{model.params ?? "—"}</strong><small>参数量</small></span>
-            <span><strong>{model.downloads?.last_30d != null ? model.downloads.last_30d.toLocaleString("en-US") : "—"}</strong><small>HF 月下载</small></span>
+            <span><strong>{model.downloads?.last_30d != null ? formatWan(model.downloads.last_30d) : "—"}</strong><small>HF 月下载</small></span>
           </BrowserRow>
         )
       })}
@@ -275,7 +296,7 @@ export function BenchmarkRows({ data, state }: { data: Benchmark[]; state: URLSe
             <span className="row-primary"><strong>{benchmark.name}</strong><small>{benchmark.id}</small></span>
             <span><strong>{benchmark.category ?? "未知"}</strong><small>类别</small></span>
             <span><strong>{benchmark.rows.length}</strong><small>评分模型</small></span>
-            <span><strong>{top ? (top.score === null ? "—" : formatRate(top.score)) : "—"}</strong><small>最高分</small></span>
+            <span><strong>{top ? (top.score === null ? "—" : top.score.toLocaleString("zh-CN", { maximumFractionDigits: 1 })) : "—"}</strong><small>最高分</small></span>
           </BrowserRow>
         )
       })}

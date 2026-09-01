@@ -1,0 +1,74 @@
+{
+  "hardware": [
+    {
+      "id": "rtx-4080-super-16gb",
+      "match_scope": "family"
+    }
+  ],
+  "id": "rtx-4080-super--cn",
+  "observations": [
+    {
+      "amount": 14001,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": null,
+      "observed_at": "2026-08-31T21:07:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "NVIDIA GeForce RTX 4080 SUPER Founders Edition Graphics Card 16GB GDDR6X - Titanium and Black（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/nvidia-founders-edition-900-1g136-2555-000-geforce-rtx-4080-super-16gb-graphics-card/p/1FT-0004-008P3"
+    },
+    {
+      "amount": 10928,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:11:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "GIGABYTE GeForce RTX 4080 SUPER WINDFORCE V2 16G Graphics Card（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/p/pl?N=100007709+601432394"
+    },
+    {
+      "amount": 12529,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:11:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "ASUS ProArt GeForce RTX 4080 SUPER OC Edition Graphics Card（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/p/pl?d=rtx+4080+super+gpu"
+    }
+  ],
+  "observed_at": "2026-08-31T21:07:10Z",
+  "product": {
+    "category": "gpu",
+    "id": "rtx-4080-super",
+    "name": "RTX 4080 super"
+  },
+  "provenance": {
+    "scanner": "https://claude.ai/code/routines",
+    "snapshot_generated_at": "2026-08-31T21:07:10Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 2,
+    "listing_count": 3,
+    "lowest_new": 10928,
+    "lowest_refurbished": null,
+    "lowest_used": null,
+    "retailer_count": 1
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}

@@ -13,3 +13,6 @@ __pycache__/
 
 .claude/
 .vercel
+
+AGENTS.md
+CLAUDE.md

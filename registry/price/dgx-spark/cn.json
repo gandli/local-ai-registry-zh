@@ -1,0 +1,63 @@
+{
+  "hardware": [
+    {
+      "id": "dgx-spark-gb10-128gb",
+      "match_scope": "exact"
+    }
+  ],
+  "id": "dgx-spark--cn",
+  "observations": [
+    {
+      "amount": 35893,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": null,
+      "observed_at": "2026-08-31T21:07:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · bhphotovideo",
+      "title": "NVIDIA DGX Spark Founders Edition 940-54242-0000-000（参考换算，待中国零售商直采）",
+      "url": "https://www.bhphotovideo.com/c/product/1927297-REG/nvidia_940_54242_0000_000_dgx_spark_founders_edition.html"
+    },
+    {
+      "amount": 33746,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:11:18Z",
+      "quantity": null,
+      "retailer": "参考换算 · microcenter",
+      "title": "NVIDIA DGX Spark 20 core Arm, 128GB LPDDR5x Unified RAM, 4TB Solid State Drive（参考换算，待中国零售商直采）",
+      "url": "https://www.microcenter.com/product/699008/nvidia-dgx-spark"
+    }
+  ],
+  "observed_at": "2026-08-31T21:07:10Z",
+  "product": {
+    "category": "gpu",
+    "id": "dgx-spark",
+    "name": "NVIDIA DGX Spark"
+  },
+  "provenance": {
+    "scanner": "https://claude.ai/code/routines",
+    "snapshot_generated_at": "2026-08-31T21:07:10Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 1,
+    "listing_count": 2,
+    "lowest_new": 33746,
+    "lowest_refurbished": null,
+    "lowest_used": null,
+    "retailer_count": 2
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}

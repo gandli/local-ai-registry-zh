@@ -1,0 +1,85 @@
+{
+  "hardware": [
+    {
+      "id": "rtx-4070-ti-super-16gb",
+      "match_scope": "family"
+    }
+  ],
+  "id": "rtx-4070-ti-super--cn",
+  "observations": [
+    {
+      "amount": 9346,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": null,
+      "observed_at": "2026-08-31T21:07:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "GIGABYTE GeForce RTX 4070 Ti SUPER WINDFORCE OC 16G Graphics Card（参考换算，待中国零售商直采）",
+      "url": "https://newegg.com/gigabyte-geforce-rtx-4070-ti-super-gv-n407tswf3oc-16gd/p/N82E16814932678"
+    },
+    {
+      "amount": 9470,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": null,
+      "observed_at": "2026-08-31T21:07:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "ASUS TUF RTX 4070 Ti SUPER Gaming Graphics Card（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/asus-tuf-gaming-tuf-rtx4070tis-o16g-gaming-geforce-rtx-4070-ti-super-16gb-graphics-card-triple-fans/p/N82E16814126685"
+    },
+    {
+      "amount": 9089,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:11:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "MSI Gaming GeForce RTX 4070 Ti SUPER 16G GAMING X SLIM（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/p/pl?N=100007709&d=rtx+4070+ti+refurb&isdeptsrh=1"
+    },
+    {
+      "amount": 5959,
+      "condition": "refurbished",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:11:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "Refurbished MSI Ventus GeForce RTX 4070 Ti SUPER 16G VENTUS 2X WHITE OC（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/p/pl?Order=1&d=4070+ti&page=1"
+    }
+  ],
+  "observed_at": "2026-08-31T21:07:10Z",
+  "product": {
+    "category": "gpu",
+    "id": "rtx-4070-ti-super",
+    "name": "RTX 4070 ti super"
+  },
+  "provenance": {
+    "scanner": "https://claude.ai/code/routines",
+    "snapshot_generated_at": "2026-08-31T21:07:10Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 2,
+    "listing_count": 4,
+    "lowest_new": 9089,
+    "lowest_refurbished": 5959,
+    "lowest_used": null,
+    "retailer_count": 1
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}

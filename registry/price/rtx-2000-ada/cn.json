@@ -1,0 +1,74 @@
+{
+  "hardware": [
+    {
+      "id": "rtx-2000-ada-16gb",
+      "match_scope": "family"
+    }
+  ],
+  "id": "rtx-2000-ada--cn",
+  "observations": [
+    {
+      "amount": 6096,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": null,
+      "observed_at": "2026-08-31T21:07:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · bhphotovideo",
+      "title": "NVIDIA RTX 2000 Ada Generation Graphics Card（参考换算，待中国零售商直采）",
+      "url": "https://www.bhphotovideo.com/c/product/1882047-REG/nvidia_900_5g192_2240_000_rtx_2000_ada_graphic.html"
+    },
+    {
+      "amount": 6096,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:11:18Z",
+      "quantity": null,
+      "retailer": "参考换算 · bhphotovideo",
+      "title": "PNY NVIDIA RTX 2000 Ada Generation Graphics Card（参考换算，待中国零售商直采）",
+      "url": "https://www.bhphotovideo.com/c/replacement_for/1882047-REG/nvidia_900_5g192_2240_000_rtx_2000_ada_graphic.html"
+    },
+    {
+      "amount": 6103,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": null,
+      "observed_at": "2026-08-31T21:07:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "PNY RTX 2000E ADA VCNRTX2000ADAS-LLP 16GB 128-bit GDDR6 PCI Express 4.0 x8 Graphics Card（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/pny-technologies-inc-vcnrtx2000adas-llp-rtx-2000e-ada-16gb-graphics-card/p/N82E16814133896"
+    }
+  ],
+  "observed_at": "2026-08-31T21:07:10Z",
+  "product": {
+    "category": "gpu",
+    "id": "rtx-2000-ada",
+    "name": "RTX 2000 ada"
+  },
+  "provenance": {
+    "scanner": "https://claude.ai/code/routines",
+    "snapshot_generated_at": "2026-08-31T21:07:10Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 1,
+    "listing_count": 3,
+    "lowest_new": 6096,
+    "lowest_refurbished": null,
+    "lowest_used": null,
+    "retailer_count": 2
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}
