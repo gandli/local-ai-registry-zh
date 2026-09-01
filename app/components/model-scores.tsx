@@ -17,7 +17,7 @@ export function ModelScores({ modelId }: { modelId: string }) {
     <section aria-label="公开排行榜分数" className="record-evidence">
       <p className="eyebrow">排行榜分数</p>
       <p className="trust-note">
-        经 Hugging Face 仓库关联抓取的公开质量分数。分数只描述所列变体本身，不代表本地量化版本，也不涉及速度。
+        通过 Hugging Face 仓库关联抓取的公开排行榜分数。分数只描述所列变体本身，不代表本地量化版本，也不含速度数据。
       </p>
       <table className="flag-table">
         <thead>

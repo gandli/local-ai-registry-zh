@@ -10,11 +10,11 @@ export type TopicSpec = {
 }
 
 export const TOPICS: TopicSpec[] = [
-  { key: "recipes", label: "部署方案", countKey: "recipe", description: "模型文件 × 硬件 × 引擎的兼容单元。已验证条目附可复现启动配置，速度以实测数据标注。" },
-  { key: "hardware", label: "硬件", countKey: "hardware", description: "加速器规格，关联可兼容的模型、部署方案和区域价格。" },
-  { key: "models", label: "模型", countKey: "model", description: "规范模型，关联模型文件、支持的硬件和部署方案。" },
-  { key: "prices", label: "价格", countKey: "price", description: "各地区最新零售商报价，以当地货币显示；含候选匹配。" },
-  { key: "benchmark", label: "排行榜", countKey: "benchmark", description: "来自 GitHub Pages 排行榜（如 Terminal-Bench 2.1）的公开质量分数，非本地速度测量。" },
+  { key: "recipes", label: "部署方案", countKey: "recipe", description: "模型文件 × 硬件 × 引擎的兼容单元。已验证条目附可复现启动配置，速度基于实测数据标注。" },
+  { key: "hardware", label: "硬件", countKey: "hardware", description: "加速器规格，关联模型、部署方案和区域价格。" },
+  { key: "models", label: "模型", countKey: "model", description: "标准模型，关联模型文件、支持的硬件和部署方案。" },
+  { key: "prices", label: "价格", countKey: "price", description: "各地区最新零售商报价，以当地货币显示，含候选匹配。" },
+  { key: "benchmark", label: "排行榜", countKey: "benchmark", description: "来自 GitHub Pages 排行榜（如 Terminal-Bench 2.1）的公开排行榜分数，不含本地速度测量。" },
 ]
 
 const COLLECTION_LABELS: Record<string, string> = {

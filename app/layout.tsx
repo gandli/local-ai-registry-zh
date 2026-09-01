@@ -35,7 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         </header>
         {children}
         <footer>
-          <p>数据按原始内容显示，未知字段保持未知。</p>
+          <p>数据按原始内容显示，未知字段显示为未知。</p>
           <a href="/api/v1/index">数据索引</a>
         </footer>
       </body>

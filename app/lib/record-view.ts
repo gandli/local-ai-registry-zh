@@ -170,7 +170,7 @@ export function recordFacts(collection: string, record: Record<string, unknown>)
       fact("来源", record.recipe_source),
       fact("引擎", engine?.name),
       fact("引擎版本", engine?.version),
-      fact("计算图", engine?.graph_mode),
+      fact("图模式", typeof engine?.graph_mode === "string" ? ({ full: "全量图", piecewise: "分段图", "full-and-piecewise": "全量+分段" } as Record<string,string>)[engine.graph_mode] ?? engine.graph_mode : engine?.graph_mode),
       fact("加速器数", record.hardware_count),
       fact("张量并行", serving?.tensor_parallel),
       fact("上下文长度", typeof serving?.max_context_tokens === "number" ? `${serving.max_context_tokens.toLocaleString()} tokens` : serving?.max_context_tokens),
@@ -184,7 +184,7 @@ export function recordFacts(collection: string, record: Record<string, unknown>)
       fact("厂商", record.vendor),
       fact("类型", kindLabel(record.kind)),
       fact("后端", record.accelerator_backend),
-      fact("显存", memory?.vram_gb === undefined ? null : `${memory.vram_gb} GB`),
+      fact(record.kind === "unified" ? "统一内存" : record.kind === "integrated" ? "核显内存" : "显存", memory?.vram_gb === undefined ? null : `${memory.vram_gb} GB`),
       fact("内存类型", memory?.vram_type),
       fact("带宽", (() => {
         const bandwidth = memory?.bandwidth_gb_per_s
@@ -212,7 +212,7 @@ export function recordFacts(collection: string, record: Record<string, unknown>)
     return [
       fact("仓库", record.repository),
       fact("版本", record.revision),
-      fact("精度", weights?.precision),
+      fact("量化位宽", weights?.precision),
       fact("格式", weights?.format),
     ].filter((item): item is RecordFact => item !== null)
   }

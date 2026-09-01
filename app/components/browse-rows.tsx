@@ -67,11 +67,8 @@ function formatAmount(amount: number, currency: string): string {
   return `${currency} ${amount.toLocaleString("zh-CN")}`
 }
 
-function peakSpeed(rows: Array<{ decode_tok_s_per_stream?: number | null; decode_tok_s?: number | null; prefill_tok_s?: number | null }>): number | null {
-  const values = rows.flatMap((row) => {
-    const value = row.decode_tok_s_per_stream ?? row.decode_tok_s ?? row.prefill_tok_s
-    return typeof value === "number" ? [value] : []
-  })
+function peakSpeed(rows: Array<{ decode_tok_s_per_stream?: number | null }>): number | null {
+  const values = rows.flatMap((row) => typeof row.decode_tok_s_per_stream === "number" ? [row.decode_tok_s_per_stream] : [])
   return values.length > 0 ? Math.max(...values) : null
 }
 
@@ -168,7 +165,7 @@ export function RecipeRows({ by, data, state }: { by: "hardware" | "model"; data
             {by === "hardware" ? model : hardware}
             <span><strong>{result.recipe.engine.name}</strong><small>{result.recipe.launch.kind}</small></span>
             <span><strong>{formatTokens(context)}</strong><small>上下文</small></span>
-            <span><strong>{speed === null ? "—" : formatRate(speed)}</strong><small>{result.speed_evidence.available ? "实测" : "无证据"}</small></span>
+            <span><strong>{speed === null ? "—" : formatRate(speed)}</strong><small>{result.speed_evidence.available ? "实测" : "未实测"}</small></span>
           </BrowserRow>
         )
       })}
@@ -186,7 +183,7 @@ export function PriceRows({ data, state }: { data: PriceResult[]; state: URLSear
           ? "全新"
           : record.summary.lowest_refurbished !== null ? "翻新" : record.summary.lowest_used !== null ? "二手" : "无在售"
         const tags: RowTag[] = [
-          { label: record.region.code, name: "region", value: record.region.code },
+          { label: record.verification?.method?.startsWith("derived") ? `${record.region.code} · 换算` : record.region.code, name: "region", value: record.region.code },
           { label: record.product.category, name: "category", value: record.product.category },
           { label: condition, name: "condition", value: condition },
         ]

@@ -1,0 +1,165 @@
+{
+  "summary": "审计 271 行 CJK 文案，发现 20 条问题：P0 翻译腔/歧义 5 处（× 分隔符、价格观察、候选证据、规范模型、运行操作），P1 语域/量词/标点 8 处，P2 细微混排/冗余 7 处。整体质量中上，术语统一好，中英文间距一致，标点绝大多数全角正确。主要问题集中在过滤标签和说明文案的翻译腔。",
+  "findings": [
+    {
+      "category": "标点",
+      "location": "app/lib/catalog.ts:13",
+      "current": "模型文件 × 硬件 × 引擎的兼容单元",
+      "issue": "用乘号「×」做分隔符不符合中文排版习惯。中文技术文档中枚举组合用「×」看起来像「乘以」，应在说明文字中用「、」或「·」做分隔。",
+      "suggestion": "模型文件、硬件、引擎的兼容单元",
+      "severity": "P0"
+    },
+    {
+      "category": "歧义",
+      "location": "app/lib/catalog.ts:15",
+      "current": "规范模型",
+      "issue": "「规范模型」有歧义：是「规范化的模型」还是「标准模型」？英文 Canonical models 直译，中文读者可能理解为「规定/规范层面的模型」。",
+      "suggestion": "标准模型",
+      "severity": "P0"
+    },
+    {
+      "category": "翻译腔",
+      "location": "app/components/configuration-card.tsx:167",
+      "current": "候选证据 — 不含可执行启动配置",
+      "issue": "「候选证据」搭配不当，证据是证据，方案是方案。英文 candidate evidence 直译，中文更自然说「候选方案」或「仅参考」。",
+      "suggestion": "候选方案 — 不含可执行启动配置",
+      "severity": "P0"
+    },
+    {
+      "category": "其他",
+      "location": "app/components/registry-search.tsx:22",
+      "current": "搜索价格观察",
+      "issue": "「价格观察」不是标准中文说法，英文 price observations 直译。搜索框 placeholder 用「搜索价格」即可。",
+      "suggestion": "搜索价格",
+      "severity": "P0"
+    },
+    {
+      "category": "翻译腔",
+      "location": "app/components/configuration-card.tsx:200",
+      "current": "模型库不为该部署方案提供运行操作。",
+      "issue": "「运行操作」是 runtime operations 直译，中文里「操作」冗余。一条部署方案不提供「运行」功能即可。",
+      "suggestion": "模型库不为该部署方案提供运行支持。",
+      "severity": "P0"
+    },
+    {
+      "category": "量词单位",
+      "location": "app/components/hardware-market.tsx:29",
+      "current": "最低全新",
+      "issue": "「最低全新」缺量词，完整的说法是「最低全新价」或「全新最低价」。作为列标题虽可压缩，但「全新」后缺「价」字在中文中读起来别扭。",
+      "suggestion": "最低全新价",
+      "severity": "P1"
+    },
+    {
+      "category": "语气不一致",
+      "location": "app/components/browse-rows.tsx:126",
+      "current": "未找到匹配结果，试试调整搜索或筛选条件。",
+      "issue": "「试试」是口语语气，与页面其他位置的「请清除搜索词或移除筛选条件」（page.tsx:223）的「请」不一致。同一网站内「请」和「试试」混用。",
+      "suggestion": "未找到匹配结果，请调整搜索或筛选条件。",
+      "severity": "P1"
+    },
+    {
+      "category": "翻译腔",
+      "location": "app/lib/catalog.ts:14",
+      "current": "加速器规格，关联可兼容的模型、部署方案和区域价格。",
+      "issue": "「可兼容的」为冗余修饰，中文「兼容的」已含「可」义，且为英文 compatible 直译附带。",
+      "suggestion": "加速器规格，关联兼容的模型、部署方案和区域价格。",
+      "severity": "P1"
+    },
+    {
+      "category": "翻译腔",
+      "location": "app/components/launch-command.tsx:13",
+      "current": "上述启动配置的精确还原",
+      "issue": "「上述」是正式书面语/公文用语，与整段技术说明的语气不匹配。启动配置就是当前页面上方内容，无需「上述」。",
+      "suggestion": "启动配置的精确还原",
+      "severity": "P1"
+    },
+    {
+      "category": "冗余",
+      "location": "app/lib/record-view.ts:233",
+      "current": "数据点数",
+      "issue": "「数据点数」中「点」和「数」冗余，为英文 datapoints count 的直译。中文「数据点」已含「数」的概念。",
+      "suggestion": "数据点",
+      "severity": "P1"
+    },
+    {
+      "category": "其他",
+      "location": "app/components/registry-search.tsx:23",
+      "current": "搜索模型或硬件",
+      "issue": "部署方案搜索的 placeholder 显示「搜索模型或硬件」，但实际搜索的是兼容的部署方案，不是模型或硬件本身。用户可能困惑。",
+      "suggestion": "搜索兼容部署方案",
+      "severity": "P1"
+    },
+    {
+      "category": "其他",
+      "location": "app/page.tsx:155",
+      "current": "已附实测速度",
+      "issue": "「已附实测速度」有些生硬，且「已附」是 attached 直译。更自然的说法是「有实测速度」。",
+      "suggestion": "有实测速度",
+      "severity": "P1"
+    },
+    {
+      "category": "语气不一致",
+      "location": "app/page.tsx:165",
+      "current": "仅看有报价",
+      "issue": "「仅看有报价」口语化，但页面其他过滤选项是「任意xx」「全部xx」的中性风格，且「仅看」「只看」措辞不统一。",
+      "suggestion": "只看有报价",
+      "severity": "P1"
+    },
+    {
+      "category": "混排空格",
+      "location": "app/components/configuration-card.tsx:195",
+      "current": "原始字符串保留在 metadata 中",
+      "issue": "中英文混排空格整体一致（多为空格分隔），此处正确。但注意前文「源命令无法忠实分词」的「分词」与后文「metadata」作为混排基准，验收时建议统一用无空格。备查项。",
+      "suggestion": "无需修改，保持现状",
+      "severity": "P2"
+    },
+    {
+      "category": "冗余",
+      "location": "app/components/record-sheet.tsx:182",
+      "current": "来源与元数据（{items.length}）",
+      "issue": "「来源与元数据」语义有重叠：来源字段多属 metadata。作为可折叠区块标题可接受，但「来源」与「元数据」并列冗余。",
+      "suggestion": "元数据（{items.length}）",
+      "severity": "P2"
+    },
+    {
+      "category": "其他",
+      "location": "app/[collection]/[id]/page.tsx:48",
+      "current": "面包屑",
+      "issue": "「面包屑」是标准中文 UI 术语翻译，aria-label 给屏幕阅读器读，中文语境下可接受。备查。",
+      "suggestion": "无需修改，保持现状",
+      "severity": "P2"
+    },
+    {
+      "category": "其他",
+      "location": "app/components/record-body.tsx:48",
+      "current": "不提供可直接运行的启动配置",
+      "issue": "「可直接运行的」作定语太长，整句欧化结构。中文更自然：不提供可执行启动配置。",
+      "suggestion": "不提供可执行的启动配置",
+      "severity": "P2"
+    },
+    {
+      "category": "语气不一致",
+      "location": "app/components/launch-command.tsx:16",
+      "current": "不是会漂移的浮动 tag",
+      "issue": "「会漂移的浮动 tag」偏口语/幽默，与页面其他技术说明语气不一致。但作为风格点缀可接受。",
+      "suggestion": "不是会漂移的浮动标签",
+      "severity": "P2"
+    },
+    {
+      "category": "歧义",
+      "location": "app/lib/record-view.ts:240",
+      "current": "评分模型数",
+      "issue": "「评分模型数」有歧义：是「评分用的模型数」还是「被评分的模型数」？实际取 rows.length（条目数）。",
+      "suggestion": "评分条目数",
+      "severity": "P2"
+    },
+    {
+      "category": "其他",
+      "location": "app/layout.tsx:30",
+      "current": "Primary navigation",
+      "issue": "主导航 aria-label 用了英文「Primary navigation」，而页面其他 aria-label 均为中文（如「模型库分类」「搜索模型库」）。中英文混用。",
+      "suggestion": "主导航",
+      "severity": "P2"
+    }
+  ]
+}

@@ -188,7 +188,7 @@ export default async function Home({ searchParams }: PageProps) {
 
       {!topic ? (
         <>
-          <header className="overview-heading"><span className="mono-label">只读索引 · 数据可溯源</span><h1>模型库索引</h1></header>
+          <header className="overview-heading"><span className="mono-label">只读索引 · 数据可追溯</span><h1>模型库索引</h1></header>
           <section className="overview-search" aria-label="搜索模型库"><RegistrySearch filters={[]} query={query} topic="" /></section>
           <nav aria-label="模型库分类计数" className="topic-index">
             {TOPICS.map((item, index) => {

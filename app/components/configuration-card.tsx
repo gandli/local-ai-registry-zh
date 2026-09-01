@@ -164,7 +164,7 @@ function FlagTable({ tokens }: { tokens: string[] }) {
 const KIND_ZH: Record<string,string> = { "docker": "Docker", "docker-compose": "Compose", "native": "原生", "script": "脚本", "controller": "控制器", "reference": "参考" }
 export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
   const runtime = config.hasContainer ? "容器" : config.kind === "reference" ? "仅参考" : "无容器"
-  const trust = config.launchable ? "已验证的可复现启动配置" : "候选证据 — 不含可执行启动配置"
+  const trust = config.launchable ? "已验证的可复现启动配置" : "候选证据——不含可执行启动配置"
   const argv = config.steps.length > 0 ? null : config.arguments
   const showFlags = config.fidelity !== "lossy"
   const empty = !config.image && !config.arguments.length && !config.steps.length && !config.endpoint && !Object.keys(config.environment).length && !config.notes.length && config.fidelity !== "lossy"

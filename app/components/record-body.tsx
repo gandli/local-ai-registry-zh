@@ -44,7 +44,7 @@ export function RecordBody({
         <>
           <p className="trust-note">
             {recipeIsLaunchable(record)
-              ? "已验证：模型文件版本与运行时镜像均已锁定，证据已采纳。可直接执行，结果可复现。"
+              ? "已验证：模型文件版本和运行时镜像均已锁定，证据已采纳。可直接执行，结果可复现。"
               : "候选：有兼容性或速度证据，但尚未满足升级条件，不提供可直接运行的启动配置。"}
           </p>
           <ConfigurationCard config={config} />

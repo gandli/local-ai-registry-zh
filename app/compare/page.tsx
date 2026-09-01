@@ -17,7 +17,7 @@ const COLUMNS: Array<{ key: SortKey; label: string }> = [
   { key: "fp16", label: "FP16 TFLOPS" },
   { key: "fp8", label: "FP8 TFLOPS" },
   { key: "fp4", label: "FP4 TFLOPS" },
-  { key: "int8", label: "INT8 TOPS" },
+  { key: "int8", label: "INT8 TFLOPS" },
   { key: "price", label: "最低全新" },
   { key: "recipes", label: "部署方案数" },
 ]
@@ -71,7 +71,7 @@ export default async function ComparePage({ searchParams }: { searchParams: Prom
           <span className="mono-label">分类 / 对比</span>
           <h1>硬件对比</h1>
           <p className="topic-description">
-            所有加速器横向对比：显存、厂商公布的算力、最低在售报价（中国大陆优先，人民币；缺则美元），以及模型库收录的部署方案数量。点击列标题即可按该项排序；* 表示厂商仅公开 2:4 结构化稀疏算力、未公开稠密数值。
+            所有加速器横向对比：显存、厂商公布的算力、最低报价（中国大陆优先，人民币；无则用美元）。CN 报价为美区数据按 7.18 参考汇率换算，待中国零售商直采数据补全。，以及模型库收录的部署方案数量。点击列标题即可按该项排序。* 表示厂商仅公开 2:4 结构化稀疏算力，未公开稠密数值。
           </p>
         </div>
         <span className="topic-total">{rows.length.toLocaleString("en-US")} 台设备</span>

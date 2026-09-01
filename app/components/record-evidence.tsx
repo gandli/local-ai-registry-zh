@@ -95,7 +95,7 @@ export function RecordEvidence({ collection, record }: { collection: string; rec
             <th>并发</th>
             <th>上下文</th>
             <th>预填充 tok/s</th>
-            <th>解码 tok/s</th>
+            <th>解码 tok/s（每流）</th>
             <th>首字延迟 ms</th>
             <th>状态</th>
             {collection === "recipes" && <th>测试</th>}
