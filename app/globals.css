@@ -6,7 +6,7 @@
   --surface-3: #282828;
   --ink: #f4f2ec;
   --muted: #9a9a96;
-  --faint: #70706c;
+  --faint: #8a8a86; /* was #70706c, 3.7:1 on --canvas; AA 4.5:1 floor */
   --line: #30302f;
   --line-light: #d8d3ca;
   --cream: #f1eee7;
@@ -701,6 +701,8 @@ body > footer p { margin: 0; }
 .sheet-quiet-row { font-size: 0.78rem; }
 .sheet-quiet-row .sheet-caption { display: inline; margin-right: 8px; }
 
+.browse-empty { padding: 28px 0; color: var(--muted); font-size: 0.85rem; }
+
 .launch-command {
   margin: 12px 0 10px;
   padding: 14px 16px;
@@ -711,7 +713,8 @@ body > footer p { margin: 0; }
   font-size: 0.72rem;
   line-height: 1.65;
   overflow-x: auto;
-  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
   color: var(--ink);
 }
 

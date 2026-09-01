@@ -101,7 +101,12 @@ function BrowserRow({
   )
 }
 
+function BrowseEmpty() {
+  return <p className="browse-empty">未找到匹配结果，试试调整搜索或筛选条件。</p>
+}
+
 export function RecipeRows({ by, data, state }: { by: "hardware" | "model"; data: CompatibilityResult[]; state: URLSearchParams }) {
+  if (data.length === 0) return <BrowseEmpty />
   return (
     <div className="browser-list recipe-browser-list">
       {data.map((result) => {
@@ -151,6 +156,7 @@ export function RecipeRows({ by, data, state }: { by: "hardware" | "model"; data
 }
 
 export function PriceRows({ data, state }: { data: PriceResult[]; state: URLSearchParams }) {
+  if (data.length === 0) return <BrowseEmpty />
   return (
     <div className="browser-list collection-list">
       {data.map((record) => {
@@ -185,6 +191,7 @@ export function PriceRows({ data, state }: { data: PriceResult[]; state: URLSear
 }
 
 export function HardwareRows({ data, state }: { data: Hardware[]; state: URLSearchParams }) {
+  if (data.length === 0) return <BrowseEmpty />
   return (
     <div className="browser-list collection-list">
       {data.map((hardware) => {
@@ -218,6 +225,7 @@ export function HardwareRows({ data, state }: { data: Hardware[]; state: URLSear
 }
 
 export function ModelRows({ data, state }: { data: Model[]; state: URLSearchParams }) {
+  if (data.length === 0) return <BrowseEmpty />
   return (
     <div className="browser-list collection-list">
       {data.map((model) => {
@@ -247,6 +255,7 @@ export function ModelRows({ data, state }: { data: Model[]; state: URLSearchPara
 }
 
 export function BenchmarkRows({ data, state }: { data: Benchmark[]; state: URLSearchParams }) {
+  if (data.length === 0) return <BrowseEmpty />
   return (
     <div className="browser-list collection-list">
       {data.map((benchmark) => {

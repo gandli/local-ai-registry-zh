@@ -19,7 +19,7 @@ export function LaunchCommand({ recipe }: { recipe: Recipe }) {
         <li>在 <code>localhost:{String((recipe.launch as Record<string, unknown>).host_port ?? "")}</code> 提供 OpenAI 兼容 API——任意客户端可直接接入。</li>
       </ol>
       <pre className="launch-command"><code>{command}</code></pre>
-      <CopyActions items={[{ label: "复制 Docker 命令", value: command }]} />
+      <CopyActions items={[{ label: "Docker 命令", value: command }]} />
     </section>
   )
 }
