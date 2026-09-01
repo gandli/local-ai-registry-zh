@@ -2,6 +2,9 @@ import Link from "next/link"
 
 import { getModelBenchmarkScores } from "@/lib/registry"
 
+const CATEGORY_LABELS: Record<string, string> = { coding: "编程", knowledge: "知识", math: "数学", multimodal: "多模态", reasoning: "推理", speech_asr: "语音识别", "speech-asr": "语音识别", instruction_following: "指令遵循", tool_use: "工具调用" }
+const CONF_LABELS: Record<string, string> = { high: "高", medium: "中", low: "低" }
+
 export function ModelScores({ modelId }: { modelId: string }) {
   const scores = getModelBenchmarkScores(modelId)
   if (scores.length === 0) return null
@@ -14,7 +17,7 @@ export function ModelScores({ modelId }: { modelId: string }) {
     <section aria-label="公开排行榜分数" className="record-evidence">
       <p className="eyebrow">排行榜分数</p>
       <p className="trust-note">
-        通过 Hugging Face 仓库关联到该模型的公开质量分数抓取结果。分数描述所列变体本身，而非任何本地量化版本，且从不表示速度测量。
+        经 Hugging Face 仓库关联抓取的公开质量分数。分数只描述所列变体本身，不代表本地量化版本，也不涉及速度。
       </p>
       <table className="flag-table">
         <thead>
@@ -31,11 +34,11 @@ export function ModelScores({ modelId }: { modelId: string }) {
           {rows.map((row, index) => (
             <tr key={`${row.benchmark_id}-${index}`}>
               <td><Link href={`/benchmark/${row.benchmark_id}`}>{row.benchmark_id}</Link></td>
-              <td>{row.category ?? "—"}</td>
+              <td>{row.category ? (CATEGORY_LABELS[row.category] ?? row.category) : "—"}</td>
               <td>{row.score ?? "—"}</td>
               <td>{row.rank ?? "—"}</td>
               <td>{row.variant ?? "—"}</td>
-              <td>{row.conf ?? "—"}</td>
+              <td>{row.conf ? (CONF_LABELS[row.conf] ?? row.conf) : "—"}</td>
             </tr>
           ))}
         </tbody>

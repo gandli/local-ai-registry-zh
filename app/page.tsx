@@ -149,7 +149,7 @@ export default async function Home({ searchParams }: PageProps) {
     { label: "运行方式", name: "runtime", value: value("runtime"), options: [
       { label: "任意运行方式", value: "" },
       { label: "Docker / compose", value: "docker" },
-      { label: "原生 / 无 docker", value: "native" },
+      { label: "原生（无 Docker）", value: "native" },
       { label: "仅参考", value: "reference" },
     ] },
     { label: "证据", name: "evidence", value: value("evidence"), options: facetOptions(["true", "false"], "任意证据", (item) => item === "true" ? "已附实测速度" : "无实测速度") },
@@ -188,7 +188,7 @@ export default async function Home({ searchParams }: PageProps) {
 
       {!topic ? (
         <>
-          <header className="overview-heading"><span className="mono-label">只读 / 源数据支撑</span><h1>模型库索引</h1></header>
+          <header className="overview-heading"><span className="mono-label">只读索引 · 数据可溯源</span><h1>模型库索引</h1></header>
           <section className="overview-search" aria-label="搜索模型库"><RegistrySearch filters={[]} query={query} topic="" /></section>
           <nav aria-label="模型库分类计数" className="topic-index">
             {TOPICS.map((item, index) => {
@@ -213,7 +213,7 @@ export default async function Home({ searchParams }: PageProps) {
         </>
       ) : (
         <>
-          <header className="topic-heading"><div><span className="mono-label">分类 / {topic.toUpperCase()}</span><h1>{spec?.label}</h1><p className="topic-description">{spec?.description}</p></div><span className="topic-total">{total.toLocaleString()} 条记录</span></header>
+          <header className="topic-heading"><div><span className="mono-label">分类 / {spec?.label}</span><h1>{spec?.label}</h1><p className="topic-description">{spec?.description}</p></div><span className="topic-total">{total.toLocaleString()} 条记录</span></header>
           <section className="topic-search" aria-label={`${spec?.label} 搜索`}><RegistrySearch filters={topicFilters} query={query} topic={topic} /></section>
           {topic === "recipes" && <RecipeRows by={recipeBrowse} data={recipeResults.data} state={viewState} />}
           {topic === "hardware" && <HardwareRows data={hardwareResults.data} state={viewState} />}
@@ -234,7 +234,7 @@ export default async function Home({ searchParams }: PageProps) {
       {selectedRecord && topic && (
         <RecordModal closeHref={closeHref} titleId="record-modal-title">
           <header className="record-modal-header">
-            <div><span className="mono-label">{topic.toUpperCase()} / 记录</span><h2 id="record-modal-title">{recordTitle(selectedRecord, selectedId)}</h2><code>{selectedId}</code></div>
+            <div><span className="mono-label">{spec?.label} / 详情</span><h2 id="record-modal-title">{recordTitle(selectedRecord, selectedId)}</h2><code>{selectedId}</code></div>
             <ModalCloseButton className="modal-close" closeHref={closeHref} label="关闭记录详情">关闭</ModalCloseButton>
           </header>
           <div className="record-modal-body">

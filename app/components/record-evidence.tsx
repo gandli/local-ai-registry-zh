@@ -21,6 +21,8 @@ function number(value: unknown): number | null {
   return typeof value === "number" && Number.isFinite(value) ? value : null
 }
 
+const EVID_STATUS: Record<string,string> = { accepted: "已采纳", rejected: "已拒绝", validated: "已验证", candidate: "候选" }
+function statusLabel(v: string): string { return EVID_STATUS[v] ?? v }
 function formatRate(value: number | null): string {
   return value === null ? "—" : value.toLocaleString(undefined, { maximumFractionDigits: 1 })
 }
@@ -92,8 +94,8 @@ export function RecordEvidence({ collection, record }: { collection: string; rec
           <tr>
             <th>并发</th>
             <th>上下文</th>
-            <th>预填充</th>
-            <th>解码</th>
+            <th>预填充 tok/s</th>
+            <th>解码 tok/s</th>
             <th>首字延迟 ms</th>
             <th>状态</th>
             {collection === "recipes" && <th>测试</th>}
@@ -107,7 +109,7 @@ export function RecordEvidence({ collection, record }: { collection: string; rec
               <td>{formatRate(row.prefill)}</td>
               <td>{formatRate(row.decode)}</td>
               <td>{formatRate(row.ttft)}</td>
-              <td>{row.status || "—"}</td>
+              <td>{row.status ? statusLabel(row.status) : "—"}</td>
               {collection === "recipes" && (
                 <td>{row.sweepId ? <Link href={`/speed-sweep/${row.sweepId}`}>{row.sweepId}</Link> : "—"}</td>
               )}

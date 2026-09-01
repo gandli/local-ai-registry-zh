@@ -61,7 +61,7 @@ export default async function DetailPage({ params }: DetailProps) {
           {recipeSearch ? (
             <Link href={`/?topic=recipes&q=${encodeURIComponent(title)}`}>查找兼容部署方案</Link>
           ) : (
-            <Link href={`${collectionBrowse}&q=${encodeURIComponent(title)}`}>返回{label}搜索</Link>
+            <Link href={`${collectionBrowse}&q=${encodeURIComponent(title)}`}>返回{label}列表</Link>
           )}
         </div>
       </header>

@@ -71,7 +71,7 @@ export default async function ComparePage({ searchParams }: { searchParams: Prom
           <span className="mono-label">分类 / 对比</span>
           <h1>硬件对比</h1>
           <p className="topic-description">
-            所有加速器横向对比：显存、厂商公布的算力、最低在售报价（中国大陆优先，人民币；缺则美元），以及模型库收录的部署方案数量。点击列标题即可按该项排序；* 表示厂商仅公开结构化稀疏算力、未公开稠密数值。
+            所有加速器横向对比：显存、厂商公布的算力、最低在售报价（中国大陆优先，人民币；缺则美元），以及模型库收录的部署方案数量。点击列标题即可按该项排序；* 表示厂商仅公开 2:4 结构化稀疏算力、未公开稠密数值。
           </p>
         </div>
         <span className="topic-total">{rows.length.toLocaleString("en-US")} 台设备</span>

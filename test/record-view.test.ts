@@ -53,7 +53,7 @@ test("long relationship lists cap and offer a collection search", () => {
 test("detail facts and copy items come from the record, not a shell dump", () => {
   const recipe = getEntityDetail("recipes", "gemma-4-12b-it-nvfp4-rtxpro6000-sglang-tp1") as Record<string, unknown>
   const facts = recordFacts("recipes", recipe)
-  assert.ok(facts.some((item) => item.label === "状态" && item.value === "validated"))
+  assert.ok(facts.some((item) => item.label === "状态" && item.value === "已验证"))
   assert.ok(facts.some((item) => item.label === "引擎" && item.value === "sglang"))
   const copies = copyItems("recipes", recipe)
   assert.ok(copies.some((item) => item.label === "启动参数" && item.value.includes("-lc")))

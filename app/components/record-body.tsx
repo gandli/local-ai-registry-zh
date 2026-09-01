@@ -44,8 +44,8 @@ export function RecordBody({
         <>
           <p className="trust-note">
             {recipeIsLaunchable(record)
-              ? "已验证：模型文件版本、运行时镜像均已固定，证据已接受。这是一份可执行启动契约。"
-              : "候选：有兼容性或速度证据，但模型库在满足推广要求前不提供运行操作。"}
+              ? "已验证：模型文件版本与运行时镜像均已锁定，证据已采纳。可直接执行，结果可复现。"
+              : "候选：有兼容性或速度证据，但尚未满足升级条件，不提供可直接运行的启动配置。"}
           </p>
           <ConfigurationCard config={config} />
           <LaunchCommand recipe={record as never} />
@@ -59,7 +59,7 @@ export function RecordBody({
         <section className="record-sheet">
           <div className="record-sheet-heading">
             <h2>其余字段</h2>
-            <p>身份、启动、关联记录和实测速度已在上方展示，此处为标准化记录的剩余部分。</p>
+            <p>身份、启动、关联记录和实测速度已在上方展示，此处为标准化记录的其余字段。</p>
           </div>
           <RecordSheet record={tree} />
         </section>

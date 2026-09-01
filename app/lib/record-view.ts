@@ -1,3 +1,5 @@
+import { REGION_LABELS } from "./catalog"
+
 export type HuggingFaceIdentity = {
   link_type?: string
   reason?: string | { code: string; detail: string }
@@ -32,6 +34,12 @@ const RELATION_LABELS: Record<string, string> = {
   recipes: "部署方案",
   speed_sweep: "速度实测",
 }
+
+const STATUS_LABELS: Record<string, string> = { validated: "已验证", candidate: "候选", accepted: "已采纳", rejected: "已拒绝", known: "已确认", unknown: "未知" }
+const KIND_LABELS: Record<string, string> = { discrete: "独立显卡", unified: "统一内存", integrated: "核显" }
+
+function statusLabel(v: unknown): unknown { return typeof v === "string" ? (STATUS_LABELS[v] ?? v) : v }
+function kindLabel(v: unknown): unknown { return typeof v === "string" ? (KIND_LABELS[v] ?? v) : v }
 
 const TREE_OMIT = new Set([
   "launch",
@@ -111,7 +119,7 @@ export function relatedGroups(record: Record<string, unknown>): RelatedGroup[] {
       links: items.slice(0, RELATED_CAP).map((item) => ({
         href: item.href,
         id: item.id,
-        label: item.name || item.id,
+        label: (item.name || item.id).replace(/·\s*([A-Z]{2})$/, (_m, c) => `· ${REGION_LABELS[c] ?? c}`),
       })),
       moreHref: items.length > RELATED_CAP ? moreHrefFor(key, record) : null,
       total: items.length,
@@ -158,23 +166,23 @@ export function recordFacts(collection: string, record: Record<string, unknown>)
   const summary = asObject(record.summary)
   if (collection === "recipes") {
     return [
-      fact("状态", record.status),
+      fact("状态", statusLabel(record.status)),
       fact("来源", record.recipe_source),
       fact("引擎", engine?.name),
       fact("引擎版本", engine?.version),
       fact("计算图", engine?.graph_mode),
       fact("加速器数", record.hardware_count),
       fact("张量并行", serving?.tensor_parallel),
-      fact("上下文长度", serving?.max_context_tokens),
-      fact("最大并发", serving?.max_concurrency),
-      fact("KV 缓存", serving?.kv_cache_tokens),
+      fact("上下文长度", typeof serving?.max_context_tokens === "number" ? `${serving.max_context_tokens.toLocaleString()} tokens` : serving?.max_context_tokens),
+      fact("最大并发", typeof serving?.max_concurrency === "number" ? `${serving.max_concurrency} 路` : serving?.max_concurrency),
+      fact("KV 缓存", typeof serving?.kv_cache_tokens === "number" ? `${serving.kv_cache_tokens.toLocaleString()} tokens` : serving?.kv_cache_tokens),
       ...capabilityFacts(record),
     ].filter((item): item is RecordFact => item !== null)
   }
   if (collection === "hardware") {
     return [
       fact("厂商", record.vendor),
-      fact("类型", record.kind),
+      fact("类型", kindLabel(record.kind)),
       fact("后端", record.accelerator_backend),
       fact("显存", memory?.vram_gb === undefined ? null : `${memory.vram_gb} GB`),
       fact("内存类型", memory?.vram_type),
@@ -195,8 +203,8 @@ export function recordFacts(collection: string, record: Record<string, unknown>)
     return [
       fact("系列", record.family),
       fact("架构", record.architecture),
-      fact("参数量", record.params),
-      fact("激活参数量", record.active_params),
+      fact("参数量", typeof record.params === "number" ? `${record.params}B` : record.params),
+      fact("激活参数量", typeof record.active_params === "number" ? `${record.active_params}B` : record.active_params),
       fact("HF 月下载量", monthly),
     ].filter((item): item is RecordFact => item !== null)
   }
@@ -212,23 +220,23 @@ export function recordFacts(collection: string, record: Record<string, unknown>)
     return [
       fact("产品", product?.name),
       fact("区域", region?.name ?? region?.code),
-      fact("货币", region?.currency),
-      fact("条目数", summary?.listing_count),
+      fact("货币", ({ CNY: "人民币", USD: "美元", EUR: "欧元", GBP: "英镑", JPY: "日元", PLN: "波兰兹罗提" } as Record<string, string>)[String(region?.currency)] ?? region?.currency),
+      fact("条目数", typeof summary?.listing_count === "number" ? `${summary.listing_count} 条报价` : summary?.listing_count),
     ].filter((item): item is RecordFact => item !== null)
   }
   if (collection === "speed-sweep") {
     const rows = Array.isArray(record.rows) ? record.rows.length : null
     return [
       fact("部署方案", record.recipe_id, typeof record.recipe_id === "string" ? `/recipes/${record.recipe_id}` : undefined),
-      fact("测量于", record.measured_at),
-      fact("接受于", record.accepted_at),
+      fact("实测时间", record.measured_at),
+      fact("采纳时间", record.accepted_at),
       fact("数据点数", rows),
     ].filter((item): item is RecordFact => item !== null)
   }
   if (collection === "benchmark") {
     const rows = Array.isArray(record.rows) ? record.rows.length : null
     return [
-      fact("类别", record.category),
+      fact("类别", ({ coding: "编程", knowledge: "知识", math: "数学", multimodal: "多模态", reasoning: "推理", speech_asr: "语音识别", "speech-asr": "语音识别" } as Record<string, string>)[String(record.category)] ?? record.category),
       fact("评分模型数", rows),
     ].filter((item): item is RecordFact => item !== null)
   }

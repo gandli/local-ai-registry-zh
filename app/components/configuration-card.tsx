@@ -161,9 +161,10 @@ function FlagTable({ tokens }: { tokens: string[] }) {
   )
 }
 
+const KIND_ZH: Record<string,string> = { "docker": "Docker", "docker-compose": "Compose", "native": "原生", "script": "脚本", "controller": "控制器", "reference": "参考" }
 export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
   const runtime = config.hasContainer ? "容器" : config.kind === "reference" ? "仅参考" : "无容器"
-  const trust = config.launchable ? "已验证的启动契约" : "候选证据 — 非可运行契约"
+  const trust = config.launchable ? "已验证的可复现启动配置" : "候选证据 — 不含可执行启动配置"
   const argv = config.steps.length > 0 ? null : config.arguments
   const showFlags = config.fidelity !== "lossy"
   const empty = !config.image && !config.arguments.length && !config.steps.length && !config.endpoint && !Object.keys(config.environment).length && !config.notes.length && config.fidelity !== "lossy"
@@ -175,9 +176,9 @@ export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
         <p className="config-runtime">
           <span data-runtime={config.hasContainer ? "docker" : config.kind}>{runtime}</span>
           {" · "}
-          <span data-status={config.status}>{config.status}</span>
+          <span data-status={config.status}>{config.status === "validated" ? "已验证" : config.status === "candidate" ? "候选" : config.status}</span>
           {" · "}
-          {config.kind.replace("-", " ")}
+          {KIND_ZH[config.kind] ?? config.kind.replace("-", " ")}
         </p>
         <p className="config-trust">{trust}</p>
       </header>
@@ -260,7 +261,7 @@ export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
         </div>
       )}
       {empty && (
-        <p className="config-empty">无分词启动字段。这是实测或文档记录的兼容性，非 Docker 启动契约。</p>
+        <p className="config-empty">无分词启动字段。这里只有实测或源码记录的兼容性，不含可执行的 Docker 启动配置。</p>
       )}
     </section>
   )

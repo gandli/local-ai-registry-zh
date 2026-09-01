@@ -22,8 +22,8 @@ export function HuggingFaceCard({ identity, title = "Hugging Face 模型卡片" 
       <a href={identity.url} rel="noreferrer" target="_blank">{identity.url}</a>
       <dl>
         <div><dt>仓库</dt><dd>{identity.repository ?? "非精确仓库匹配"}</dd></div>
-        <div><dt>状态</dt><dd>{identity.status ?? "unknown"}</dd></div>
-        <div><dt>链接类型</dt><dd>{identity.link_type === "repository" ? "精确 Hub 仓库" : "Hub 搜索兜底"}</dd></div>
+        <div><dt>状态</dt><dd>{{ known: "已确认", validated: "已验证", candidate: "候选" }[identity.status ?? ""] ?? identity.status ?? "未知"}</dd></div>
+        <div><dt>链接类型</dt><dd>{identity.link_type === "repository" ? "精确 Hub 仓库" : identity.link_type === "search" ? "Hub 搜索兜底" : (identity.link_type ?? "—")}</dd></div>
       </dl>
       <p className="hf-card-note">
         {known

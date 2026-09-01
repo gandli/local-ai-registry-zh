@@ -20,7 +20,7 @@ export function HardwareMarket({ hardwareId }: { hardwareId: string }) {
     <section aria-label="当前市场价格" className="record-evidence">
       <p className="eyebrow">当前市场</p>
       <p className="trust-note">
-        来自市场价格集合的各区域最低在售零售商报价，以当地货币显示。每行链接到含零售商与 URL 的底层观察记录。
+        各地区最新零售商报价，以当地货币显示。每行链接到底层观察记录（含零售商与直达链接）。
       </p>
       <table className="flag-table">
         <thead>

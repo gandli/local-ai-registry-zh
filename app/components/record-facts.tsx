@@ -6,7 +6,7 @@ export function RecordFacts({ facts }: { facts: RecordFact[] }) {
   if (facts.length === 0) return null
   return (
     <section aria-label="记录字段" className="record-facts">
-      <p className="eyebrow">记录</p>
+      <p className="eyebrow">基本信息</p>
       <dl>
         {facts.map((item) => (
           <div key={item.label}>

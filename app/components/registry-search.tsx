@@ -20,7 +20,7 @@ const SEARCH_LABELS: Record<string, string> = {
   hardware: "搜索硬件",
   models: "搜索模型",
   prices: "搜索价格观察",
-  recipes: "查找模型或机器",
+  recipes: "搜索模型或硬件",
   benchmarks: "搜索排行榜分数",
   "speed-sweep": "搜索实测速度数据",
 }

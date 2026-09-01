@@ -138,7 +138,7 @@ export function RecipeRows({ by, data, state }: { by: "hardware" | "model"; data
         const tags: RowTag[] = [
           { label: validation === "validated" ? "已验证" : "候选", name: "validation", value: validation },
           { label: result.recipe.engine.name, name: "engine", value: result.recipe.engine.name },
-          { label: runtime === "docker" ? "docker" : runtime === "native" ? "无 docker" : "仅参考", name: "runtime", value: runtime },
+          { label: runtime === "docker" ? "Docker" : runtime === "native" ? "原生" : "仅参考", name: "runtime", value: runtime },
           { label: result.speed_evidence.available ? "已实测" : "未实测", name: "evidence", value: String(result.speed_evidence.available) },
           { label: `${result.hardware.memory.vram_gb} GB+`, name: "min_vram_gb", value: String(result.hardware.memory.vram_gb) },
         ]
@@ -168,7 +168,7 @@ export function RecipeRows({ by, data, state }: { by: "hardware" | "model"; data
             {by === "hardware" ? model : hardware}
             <span><strong>{result.recipe.engine.name}</strong><small>{result.recipe.launch.kind}</small></span>
             <span><strong>{formatTokens(context)}</strong><small>上下文</small></span>
-            <span><strong>{speed === null ? "—" : formatRate(speed)}</strong><small>{result.speed_evidence.available ? "已实测" : "无证据"}</small></span>
+            <span><strong>{speed === null ? "—" : formatRate(speed)}</strong><small>{result.speed_evidence.available ? "实测" : "无证据"}</small></span>
           </BrowserRow>
         )
       })}
@@ -183,8 +183,8 @@ export function PriceRows({ data, state }: { data: PriceResult[]; state: URLSear
       {data.map((record) => {
         const amount = record.summary.lowest_new ?? record.summary.lowest_refurbished ?? record.summary.lowest_used
         const condition = record.summary.lowest_new !== null
-          ? "new"
-          : record.summary.lowest_refurbished !== null ? "refurbished" : record.summary.lowest_used !== null ? "used" : "unavailable"
+          ? "全新"
+          : record.summary.lowest_refurbished !== null ? "翻新" : record.summary.lowest_used !== null ? "二手" : "无在售"
         const tags: RowTag[] = [
           { label: record.region.code, name: "region", value: record.region.code },
           { label: record.product.category, name: "category", value: record.product.category },
@@ -200,7 +200,7 @@ export function PriceRows({ data, state }: { data: PriceResult[]; state: URLSear
             tags={tags}
           >
             <span className="row-primary"><strong>{record.product.name}</strong><small>{record.product.id}</small></span>
-            <span><strong>{amount === null ? "暂无在售" : formatCnyUsd(amount, record.region.currency).amount}</strong><small title={amount === null ? undefined : formatCnyUsd(amount, record.region.currency).title}>最低在售 · {condition}</small></span>
+            <span><strong>{amount === null ? "暂无在售" : formatCnyUsd(amount, record.region.currency).amount}</strong><small title={amount === null ? undefined : formatCnyUsd(amount, record.region.currency).title}>最低报价 · {condition}</small></span>
             <span><strong>{record.region.name}</strong><small>{record.region.currency}</small></span>
             <span><strong>{record.observed_at.slice(0, 10)}</strong><small>观察日期</small></span>
             <span><strong>{record.summary.listing_count.toLocaleString("zh-CN")} 条在售</strong><small>{record.summary.retailer_count} 家零售商</small></span>

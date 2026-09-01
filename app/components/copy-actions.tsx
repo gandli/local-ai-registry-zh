@@ -18,7 +18,7 @@ export function CopyActions({ items }: { items: CopyItem[] }) {
     <div className="copy-actions" aria-label="复制记录字段">
       {items.map((item) => (
         <button key={item.label} onClick={() => copy(item)} type="button">
-          复制{item.label}
+          复制 {item.label}
         </button>
       ))}
       <span className="copy-status" aria-live="polite">{copied ? `已复制 ${copied}` : ""}</span>
