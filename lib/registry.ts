@@ -285,7 +285,8 @@ export type HardwareComparisonRow = {
   fp8_sparse: boolean
   fp4_sparse: boolean
   int8_sparse: boolean
-  lowest_new_usd: number | null
+  lowest_new: number | null
+  price_currency: string | null
   price_observed_at: string | null
   recipe_count: number
 }
@@ -309,7 +310,8 @@ export function hardwareComparison(): HardwareComparisonRow[] {
     const fp4 = bestThroughput(record, "fp4")
     const int8 = bestThroughput(record, "int8")
     const market = getHardwareMarket(record.id)
-    const us = market.find((row) => row.region === "US" && row.lowest_new !== null)
+    // 中国大陆报价优先，缺失回落美区
+    const priced = market.find((row) => row.region === "CN" && row.lowest_new !== null) ?? market.find((row) => row.region === "US" && row.lowest_new !== null)
     return {
       id: record.id,
       name: record.name,
@@ -324,8 +326,9 @@ export function hardwareComparison(): HardwareComparisonRow[] {
       fp8_sparse: fp8.sparse,
       fp4_sparse: fp4.sparse,
       int8_sparse: int8.sparse,
-      lowest_new_usd: us?.lowest_new ?? null,
-      price_observed_at: us?.observed_at ?? null,
+      lowest_new: priced?.lowest_new ?? null,
+      price_currency: priced?.currency ?? null,
+      price_observed_at: priced?.observed_at ?? null,
       recipe_count: recipeCountForHardware(record.id),
     }
   })

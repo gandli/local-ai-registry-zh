@@ -7,21 +7,19 @@ export function LaunchCommand({ recipe }: { recipe: Recipe }) {
   const command = dockerCommand(recipe)
   if (!command) return null
   return (
-    <section aria-label="Launch command" className="record-evidence">
-      <p className="eyebrow">Launch</p>
+    <section aria-label="启动命令" className="record-evidence">
+      <p className="eyebrow">启动命令</p>
       <p className="trust-note">
-        Exact materialization of this validated launch contract: digest-pinned image, pinned model revision, and the
-        audited arguments. Self-contained — required assets are fetched from this registry and verified against their
-        recorded sha256 before mounting. Also available as <code>local-ai run {recipe.id}</code>.
+        上述启动配置的精确还原：镜像按摘要锁定、模型版本固定、参数经过审计。命令自包含——所需资源从本模型库获取，挂载前按记录的 sha256 校验。也可用 <code>local-ai run {recipe.id}</code> 运行。
       </p>
       <ol className="launch-steps">
-        <li>Pulls the exact container image by sha256 digest — the bytes that were validated, not a floating tag.</li>
-        <li>Fetches any required engine assets from this registry and verifies each against its recorded sha256; the audited launch script verifies them again inside the container before use.</li>
-        <li>Downloads the pinned model revision into your Hugging Face cache on first run (reused afterwards).</li>
-        <li>Serves an OpenAI-compatible API on <code>localhost:{String((recipe.launch as Record<string, unknown>).host_port ?? "")}</code> — point any client at it.</li>
+        <li>按 sha256 摘要拉取容器镜像——校验过的字节，不是会漂移的 tag。</li>
+        <li>从本模型库获取所需引擎资源并逐项按记录的 sha256 校验；审计过的启动脚本会在容器内使用前再次校验。</li>
+        <li>首次运行时将固定版本的模型下载到 Hugging Face 缓存（之后复用）。</li>
+        <li>在 <code>localhost:{String((recipe.launch as Record<string, unknown>).host_port ?? "")}</code> 提供 OpenAI 兼容 API，任意客户端可直接接入。</li>
       </ol>
       <pre className="launch-command"><code>{command}</code></pre>
-      <CopyActions items={[{ label: "Copy docker command", value: command }]} />
+      <CopyActions items={[{ label: "Docker 命令", value: command }]} />
     </section>
   )
 }

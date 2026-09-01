@@ -9,7 +9,7 @@ test("collection catalog maps path segments onto browse topics", () => {
   assert.equal(isTopic("recipes"), true)
   assert.equal(isTopic("model-instances"), false)
   assert.equal(isCollection("model-instances"), true)
-  assert.equal(collectionLabel("recipes"), "Recipe")
+  assert.equal(collectionLabel("recipes"), "部署方案")
   assert.equal(collectionTopic("model-instances"), "recipes")
   assert.equal(topicHref("hardware", "rtx"), "/?topic=hardware&q=rtx")
   assert.equal(collectionHref("prices"), "/?topic=prices")
@@ -53,10 +53,10 @@ test("long relationship lists cap and offer a collection search", () => {
 test("detail facts and copy items come from the record, not a shell dump", () => {
   const recipe = getEntityDetail("recipes", "gemma-4-12b-it-nvfp4-rtxpro6000-sglang-tp1") as Record<string, unknown>
   const facts = recordFacts("recipes", recipe)
-  assert.ok(facts.some((item) => item.label === "Status" && item.value === "validated"))
-  assert.ok(facts.some((item) => item.label === "Engine" && item.value === "sglang"))
+  assert.ok(facts.some((item) => item.label === "状态" && item.value === "已验证"))
+  assert.ok(facts.some((item) => item.label === "引擎" && item.value === "sglang"))
   const copies = copyItems("recipes", recipe)
-  assert.ok(copies.some((item) => item.label === "Launch arguments" && item.value.includes("-lc")))
+  assert.ok(copies.some((item) => item.label === "启动参数" && item.value.includes("-lc")))
   const candidate = getEntityDetail("recipes", "acereason-nemotron-1-1-7b-q4-k-m-rtx-3060-ti-8gb-llama-cpp-tp1") as Record<string, unknown>
   assert.equal(copyItems("recipes", candidate).some((item) => item.label === "Launch arguments"), false)
 })

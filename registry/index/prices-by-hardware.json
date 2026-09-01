@@ -34,36 +34,42 @@
       "macbook-pro-m2-max--pl"
     ],
     "apple-m3-max-128gb": [
+      "macbook-pro-m3-max--cn",
       "macbook-pro-m3-max--de",
       "macbook-pro-m3-max--jp",
       "macbook-pro-m3-max--pl",
       "macbook-pro-m3-max--us"
     ],
     "apple-m3-max-36gb": [
+      "macbook-pro-m3-max--cn",
       "macbook-pro-m3-max--de",
       "macbook-pro-m3-max--jp",
       "macbook-pro-m3-max--pl",
       "macbook-pro-m3-max--us"
     ],
     "apple-m3-max-48gb": [
+      "macbook-pro-m3-max--cn",
       "macbook-pro-m3-max--de",
       "macbook-pro-m3-max--jp",
       "macbook-pro-m3-max--pl",
       "macbook-pro-m3-max--us"
     ],
     "apple-m3-max-64gb": [
+      "macbook-pro-m3-max--cn",
       "macbook-pro-m3-max--de",
       "macbook-pro-m3-max--jp",
       "macbook-pro-m3-max--pl",
       "macbook-pro-m3-max--us"
     ],
     "apple-m3-max-96gb": [
+      "macbook-pro-m3-max--cn",
       "macbook-pro-m3-max--de",
       "macbook-pro-m3-max--jp",
       "macbook-pro-m3-max--pl",
       "macbook-pro-m3-max--us"
     ],
     "apple-m3-ultra-256gb": [
+      "mac-studio-m3-ultra--cn",
       "mac-studio-m3-ultra--de",
       "mac-studio-m3-ultra--gb",
       "mac-studio-m3-ultra--jp",
@@ -71,6 +77,7 @@
       "mac-studio-m3-ultra--us"
     ],
     "apple-m3-ultra-512gb": [
+      "mac-studio-m3-ultra--cn",
       "mac-studio-m3-ultra--de",
       "mac-studio-m3-ultra--gb",
       "mac-studio-m3-ultra--jp",
@@ -78,6 +85,7 @@
       "mac-studio-m3-ultra--us"
     ],
     "apple-m3-ultra-96gb": [
+      "mac-studio-m3-ultra--cn",
       "mac-studio-m3-ultra--de",
       "mac-studio-m3-ultra--gb",
       "mac-studio-m3-ultra--jp",
@@ -85,6 +93,7 @@
       "mac-studio-m3-ultra--us"
     ],
     "apple-m3-ultra-96gb-60c": [
+      "mac-studio-m3-ultra--cn",
       "mac-studio-m3-ultra--de",
       "mac-studio-m3-ultra--gb",
       "mac-studio-m3-ultra--jp",
@@ -92,6 +101,7 @@
       "mac-studio-m3-ultra--us"
     ],
     "apple-m3-ultra-96gb-80c": [
+      "mac-studio-m3-ultra--cn",
       "mac-studio-m3-ultra--de",
       "mac-studio-m3-ultra--gb",
       "mac-studio-m3-ultra--jp",
@@ -99,29 +109,34 @@
       "mac-studio-m3-ultra--us"
     ],
     "apple-m4-16gb": [
+      "mac-mini-m4--cn",
       "mac-mini-m4--de",
       "mac-mini-m4--gb",
       "mac-mini-m4--pl",
       "mac-mini-m4--us"
     ],
     "apple-m4-24gb": [
+      "mac-mini-m4--cn",
       "mac-mini-m4--de",
       "mac-mini-m4--gb",
       "mac-mini-m4--pl",
       "mac-mini-m4--us"
     ],
     "apple-m4-32gb": [
+      "mac-mini-m4--cn",
       "mac-mini-m4--de",
       "mac-mini-m4--gb",
       "mac-mini-m4--pl",
       "mac-mini-m4--us"
     ],
     "apple-m4-max-128gb": [
+      "mac-studio-m4-max--cn",
       "mac-studio-m4-max--de",
       "mac-studio-m4-max--gb",
       "mac-studio-m4-max--jp",
       "mac-studio-m4-max--pl",
       "mac-studio-m4-max--us",
+      "macbook-pro-m4-max--cn",
       "macbook-pro-m4-max--de",
       "macbook-pro-m4-max--gb",
       "macbook-pro-m4-max--jp",
@@ -129,11 +144,13 @@
       "macbook-pro-m4-max--us"
     ],
     "apple-m4-max-36gb": [
+      "mac-studio-m4-max--cn",
       "mac-studio-m4-max--de",
       "mac-studio-m4-max--gb",
       "mac-studio-m4-max--jp",
       "mac-studio-m4-max--pl",
       "mac-studio-m4-max--us",
+      "macbook-pro-m4-max--cn",
       "macbook-pro-m4-max--de",
       "macbook-pro-m4-max--gb",
       "macbook-pro-m4-max--jp",
@@ -141,11 +158,13 @@
       "macbook-pro-m4-max--us"
     ],
     "apple-m4-max-48gb": [
+      "mac-studio-m4-max--cn",
       "mac-studio-m4-max--de",
       "mac-studio-m4-max--gb",
       "mac-studio-m4-max--jp",
       "mac-studio-m4-max--pl",
       "mac-studio-m4-max--us",
+      "macbook-pro-m4-max--cn",
       "macbook-pro-m4-max--de",
       "macbook-pro-m4-max--gb",
       "macbook-pro-m4-max--jp",
@@ -153,11 +172,13 @@
       "macbook-pro-m4-max--us"
     ],
     "apple-m4-max-64gb": [
+      "mac-studio-m4-max--cn",
       "mac-studio-m4-max--de",
       "mac-studio-m4-max--gb",
       "mac-studio-m4-max--jp",
       "mac-studio-m4-max--pl",
       "mac-studio-m4-max--us",
+      "macbook-pro-m4-max--cn",
       "macbook-pro-m4-max--de",
       "macbook-pro-m4-max--gb",
       "macbook-pro-m4-max--jp",
@@ -169,6 +190,7 @@
       "mac-mini-m4-pro--gb",
       "mac-mini-m4-pro--jp",
       "mac-mini-m4-pro--pl",
+      "macbook-pro-m4-pro--cn",
       "macbook-pro-m4-pro--de",
       "macbook-pro-m4-pro--gb",
       "macbook-pro-m4-pro--jp",
@@ -180,6 +202,7 @@
       "mac-mini-m4-pro--gb",
       "mac-mini-m4-pro--jp",
       "mac-mini-m4-pro--pl",
+      "macbook-pro-m4-pro--cn",
       "macbook-pro-m4-pro--de",
       "macbook-pro-m4-pro--gb",
       "macbook-pro-m4-pro--jp",
@@ -191,6 +214,7 @@
       "mac-mini-m4-pro--gb",
       "mac-mini-m4-pro--jp",
       "mac-mini-m4-pro--pl",
+      "macbook-pro-m4-pro--cn",
       "macbook-pro-m4-pro--de",
       "macbook-pro-m4-pro--gb",
       "macbook-pro-m4-pro--jp",
@@ -198,6 +222,7 @@
       "macbook-pro-m4-pro--us"
     ],
     "apple-m5-16gb": [
+      "macbook-pro-m5--cn",
       "macbook-pro-m5--de",
       "macbook-pro-m5--gb",
       "macbook-pro-m5--jp",
@@ -205,6 +230,7 @@
       "macbook-pro-m5--us"
     ],
     "apple-m5-24gb": [
+      "macbook-pro-m5--cn",
       "macbook-pro-m5--de",
       "macbook-pro-m5--gb",
       "macbook-pro-m5--jp",
@@ -212,6 +238,7 @@
       "macbook-pro-m5--us"
     ],
     "apple-m5-32gb": [
+      "macbook-pro-m5--cn",
       "macbook-pro-m5--de",
       "macbook-pro-m5--gb",
       "macbook-pro-m5--jp",
@@ -219,6 +246,7 @@
       "macbook-pro-m5--us"
     ],
     "apple-m5-max-128gb": [
+      "macbook-pro-m5-max--cn",
       "macbook-pro-m5-max--de",
       "macbook-pro-m5-max--gb",
       "macbook-pro-m5-max--jp",
@@ -226,6 +254,7 @@
       "macbook-pro-m5-max--us"
     ],
     "apple-m5-max-36gb": [
+      "macbook-pro-m5-max--cn",
       "macbook-pro-m5-max--de",
       "macbook-pro-m5-max--gb",
       "macbook-pro-m5-max--jp",
@@ -233,6 +262,7 @@
       "macbook-pro-m5-max--us"
     ],
     "apple-m5-max-48gb": [
+      "macbook-pro-m5-max--cn",
       "macbook-pro-m5-max--de",
       "macbook-pro-m5-max--gb",
       "macbook-pro-m5-max--jp",
@@ -240,6 +270,7 @@
       "macbook-pro-m5-max--us"
     ],
     "apple-m5-max-64gb": [
+      "macbook-pro-m5-max--cn",
       "macbook-pro-m5-max--de",
       "macbook-pro-m5-max--gb",
       "macbook-pro-m5-max--jp",
@@ -247,6 +278,7 @@
       "macbook-pro-m5-max--us"
     ],
     "apple-m5-pro-24gb": [
+      "macbook-pro-m5-pro--cn",
       "macbook-pro-m5-pro--de",
       "macbook-pro-m5-pro--gb",
       "macbook-pro-m5-pro--jp",
@@ -254,6 +286,7 @@
       "macbook-pro-m5-pro--us"
     ],
     "apple-m5-pro-48gb": [
+      "macbook-pro-m5-pro--cn",
       "macbook-pro-m5-pro--de",
       "macbook-pro-m5-pro--gb",
       "macbook-pro-m5-pro--jp",
@@ -261,6 +294,7 @@
       "macbook-pro-m5-pro--us"
     ],
     "apple-m5-pro-64gb": [
+      "macbook-pro-m5-pro--cn",
       "macbook-pro-m5-pro--de",
       "macbook-pro-m5-pro--gb",
       "macbook-pro-m5-pro--jp",
@@ -268,12 +302,14 @@
       "macbook-pro-m5-pro--us"
     ],
     "dgx-spark-gb10-128gb": [
+      "dgx-spark--cn",
       "dgx-spark--gb",
       "dgx-spark--jp",
       "dgx-spark--pl",
       "dgx-spark--us"
     ],
     "intel-arc-pro-b60-24gb": [
+      "intel-arc-pro-b60--cn",
       "intel-arc-pro-b60--de",
       "intel-arc-pro-b60--gb",
       "intel-arc-pro-b60--jp",
@@ -281,6 +317,7 @@
       "intel-arc-pro-b60--us"
     ],
     "intel-arc-pro-b70-32gb": [
+      "intel-arc-pro-b70--cn",
       "intel-arc-pro-b70--de",
       "intel-arc-pro-b70--gb",
       "intel-arc-pro-b70--jp",
@@ -288,6 +325,7 @@
       "intel-arc-pro-b70--us"
     ],
     "radeon-ai-pro-r9700-32gb": [
+      "radeon-ai-pro-r9700--cn",
       "radeon-ai-pro-r9700--de",
       "radeon-ai-pro-r9700--gb",
       "radeon-ai-pro-r9700--jp",
@@ -295,6 +333,7 @@
       "radeon-ai-pro-r9700--us"
     ],
     "rtx-2000-ada-16gb": [
+      "rtx-2000-ada--cn",
       "rtx-2000-ada--de",
       "rtx-2000-ada--gb",
       "rtx-2000-ada--jp",
@@ -302,6 +341,7 @@
       "rtx-2000-ada--us"
     ],
     "rtx-3060-12gb": [
+      "rtx-3060--cn",
       "rtx-3060--de",
       "rtx-3060--gb",
       "rtx-3060--jp",
@@ -309,6 +349,7 @@
       "rtx-3060--us"
     ],
     "rtx-3060-ti-8gb": [
+      "rtx-3060-ti--cn",
       "rtx-3060-ti--de",
       "rtx-3060-ti--gb",
       "rtx-3060-ti--jp",
@@ -316,6 +357,7 @@
       "rtx-3060-ti--us"
     ],
     "rtx-3070-8gb": [
+      "rtx-3070--cn",
       "rtx-3070--de",
       "rtx-3070--gb",
       "rtx-3070--jp",
@@ -323,71 +365,83 @@
       "rtx-3070--us"
     ],
     "rtx-3070-ti-8gb": [
+      "rtx-3070-ti--cn",
       "rtx-3070-ti--de",
       "rtx-3070-ti--jp",
       "rtx-3070-ti--pl",
       "rtx-3070-ti--us"
     ],
     "rtx-3080-10gb": [
+      "rtx-3080--cn",
       "rtx-3080--de",
       "rtx-3080--jp",
       "rtx-3080--pl",
       "rtx-3080--us"
     ],
     "rtx-3080-12gb": [
+      "rtx-3080--cn",
       "rtx-3080--de",
       "rtx-3080--jp",
       "rtx-3080--pl",
       "rtx-3080--us"
     ],
     "rtx-3080-ti-12gb": [
+      "rtx-3080-ti--cn",
       "rtx-3080-ti--de",
       "rtx-3080-ti--jp",
       "rtx-3080-ti--pl",
       "rtx-3080-ti--us"
     ],
     "rtx-3090-24gb": [
+      "rtx-3090--cn",
       "rtx-3090--de",
       "rtx-3090--jp",
       "rtx-3090--pl",
       "rtx-3090--us"
     ],
     "rtx-3090-ti-24gb": [
+      "rtx-3090-ti--cn",
       "rtx-3090-ti--jp",
       "rtx-3090-ti--pl",
       "rtx-3090-ti--us"
     ],
     "rtx-4000-ada-20gb": [
+      "rtx-4000-ada--cn",
       "rtx-4000-ada--de",
       "rtx-4000-ada--jp",
       "rtx-4000-ada--pl",
       "rtx-4000-ada--us"
     ],
     "rtx-4060-8gb": [
+      "rtx-4060--cn",
       "rtx-4060--de",
       "rtx-4060--jp",
       "rtx-4060--pl",
       "rtx-4060--us"
     ],
     "rtx-4060-ti-16gb": [
+      "rtx-4060-ti--cn",
       "rtx-4060-ti--de",
       "rtx-4060-ti--jp",
       "rtx-4060-ti--pl",
       "rtx-4060-ti--us"
     ],
     "rtx-4060-ti-8gb": [
+      "rtx-4060-ti--cn",
       "rtx-4060-ti--de",
       "rtx-4060-ti--jp",
       "rtx-4060-ti--pl",
       "rtx-4060-ti--us"
     ],
     "rtx-4070-12gb": [
+      "rtx-4070--cn",
       "rtx-4070--de",
       "rtx-4070--jp",
       "rtx-4070--pl",
       "rtx-4070--us"
     ],
     "rtx-4070-super-12gb": [
+      "rtx-4070-super--cn",
       "rtx-4070-super--de",
       "rtx-4070-super--gb",
       "rtx-4070-super--jp",
@@ -395,18 +449,21 @@
       "rtx-4070-super--us"
     ],
     "rtx-4070-ti-12gb": [
+      "rtx-4070-ti--cn",
       "rtx-4070-ti--de",
       "rtx-4070-ti--jp",
       "rtx-4070-ti--pl",
       "rtx-4070-ti--us"
     ],
     "rtx-4070-ti-super-16gb": [
+      "rtx-4070-ti-super--cn",
       "rtx-4070-ti-super--gb",
       "rtx-4070-ti-super--jp",
       "rtx-4070-ti-super--pl",
       "rtx-4070-ti-super--us"
     ],
     "rtx-4080-16gb": [
+      "rtx-4080--cn",
       "rtx-4080--de",
       "rtx-4080--gb",
       "rtx-4080--jp",
@@ -414,6 +471,7 @@
       "rtx-4080--us"
     ],
     "rtx-4080-super-16gb": [
+      "rtx-4080-super--cn",
       "rtx-4080-super--de",
       "rtx-4080-super--gb",
       "rtx-4080-super--jp",
@@ -421,6 +479,7 @@
       "rtx-4080-super--us"
     ],
     "rtx-4090-24gb": [
+      "rtx-4090--cn",
       "rtx-4090--de",
       "rtx-4090--gb",
       "rtx-4090--jp",
@@ -428,6 +487,7 @@
       "rtx-4090--us"
     ],
     "rtx-5060-8gb": [
+      "rtx-5060--cn",
       "rtx-5060--de",
       "rtx-5060--gb",
       "rtx-5060--jp",
@@ -435,6 +495,7 @@
       "rtx-5060--us"
     ],
     "rtx-5060-ti-16gb": [
+      "rtx-5060-ti--cn",
       "rtx-5060-ti--de",
       "rtx-5060-ti--gb",
       "rtx-5060-ti--jp",
@@ -442,6 +503,7 @@
       "rtx-5060-ti--us"
     ],
     "rtx-5060-ti-8gb": [
+      "rtx-5060-ti--cn",
       "rtx-5060-ti--de",
       "rtx-5060-ti--gb",
       "rtx-5060-ti--jp",
@@ -449,6 +511,7 @@
       "rtx-5060-ti--us"
     ],
     "rtx-5070-12gb": [
+      "rtx-5070--cn",
       "rtx-5070--de",
       "rtx-5070--gb",
       "rtx-5070--jp",
@@ -456,6 +519,7 @@
       "rtx-5070--us"
     ],
     "rtx-5070-ti-16gb": [
+      "rtx-5070-ti--cn",
       "rtx-5070-ti--de",
       "rtx-5070-ti--gb",
       "rtx-5070-ti--jp",
@@ -463,6 +527,7 @@
       "rtx-5070-ti--us"
     ],
     "rtx-5080-16gb": [
+      "rtx-5080--cn",
       "rtx-5080--de",
       "rtx-5080--gb",
       "rtx-5080--jp",
@@ -470,6 +535,7 @@
       "rtx-5080--us"
     ],
     "rtx-5090-32gb": [
+      "rtx-5090--cn",
       "rtx-5090--de",
       "rtx-5090--gb",
       "rtx-5090--jp",
@@ -477,6 +543,7 @@
       "rtx-5090--us"
     ],
     "rtx-6000-ada-48gb": [
+      "rtx-6000-ada--cn",
       "rtx-6000-ada--de",
       "rtx-6000-ada--gb",
       "rtx-6000-ada--jp",
@@ -484,23 +551,27 @@
       "rtx-6000-ada--us"
     ],
     "rtx-a6000-48gb": [
+      "rtx-a6000--cn",
       "rtx-a6000--jp",
       "rtx-a6000--pl",
       "rtx-a6000--us"
     ],
     "rtx-pro-4000-blackwell-24gb": [
+      "rtx-pro-4000-blackwell--cn",
       "rtx-pro-4000-blackwell--de",
       "rtx-pro-4000-blackwell--jp",
       "rtx-pro-4000-blackwell--pl",
       "rtx-pro-4000-blackwell--us"
     ],
     "rtx-pro-4500-blackwell-32gb": [
+      "rtx-pro-4500-blackwell--cn",
       "rtx-pro-4500-blackwell--de",
       "rtx-pro-4500-blackwell--jp",
       "rtx-pro-4500-blackwell--pl",
       "rtx-pro-4500-blackwell--us"
     ],
     "rtx-pro-6000-blackwell-96gb": [
+      "rtx-pro-6000-blackwell--cn",
       "rtx-pro-6000-blackwell--de",
       "rtx-pro-6000-blackwell--gb",
       "rtx-pro-6000-blackwell--jp",
@@ -526,6 +597,7 @@
       "rx-7900-xtx--pl"
     ],
     "rx-9070-xt-16gb": [
+      "rx-9070-xt--cn",
       "rx-9070-xt--de",
       "rx-9070-xt--gb",
       "rx-9070-xt--jp",
@@ -533,6 +605,7 @@
       "rx-9070-xt--us"
     ],
     "ryzen-ai-max-plus-395-128gb": [
+      "amd-strix-halo-mini-pc--cn",
       "amd-strix-halo-mini-pc--de",
       "amd-strix-halo-mini-pc--pl",
       "amd-strix-halo-mini-pc--us"

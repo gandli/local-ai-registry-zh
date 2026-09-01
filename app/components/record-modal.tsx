@@ -93,7 +93,7 @@ export function RecordModal({ children, closeHref, titleId }: RecordModalProps) 
       <ModalCloseButton
         className="modal-scrim"
         closeHref={closeHref}
-        label="Close record details"
+        label="关闭记录详情"
         tabIndex={-1}
       />
       <section

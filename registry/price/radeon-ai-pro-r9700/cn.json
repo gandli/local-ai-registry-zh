@@ -1,0 +1,74 @@
+{
+  "hardware": [
+    {
+      "id": "radeon-ai-pro-r9700-32gb",
+      "match_scope": "family"
+    }
+  ],
+  "id": "radeon-ai-pro-r9700--cn",
+  "observations": [
+    {
+      "amount": 9765,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": null,
+      "observed_at": "2026-08-31T21:07:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · bhphotovideo",
+      "title": "ASUS Turbo Radeon AI Pro R9700 Graphics TURBO-AI-PRO-R9700-32G（参考换算，待中国零售商直采）",
+      "url": "https://www.bhphotovideo.com/c/product/1928519-REG/asus_turbo_ai_pro_r9700_32g_turbo_radeon_ai_pro.html"
+    },
+    {
+      "amount": 12062,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": null,
+      "observed_at": "2026-08-31T12:11:18Z",
+      "quantity": null,
+      "retailer": "参考换算 · microcenter",
+      "title": "ASRock AMD Radeon AI PRO R9700 Creator Single-Fan AI & Workstation Graphics Card; 32GB GDDR6 Memory; PCIe 5.0 x16 Interface（参考换算，待中国零售商直采）",
+      "url": "https://www.microcenter.com/product/702444/asrock-amd-radeon-ai-pro-r9700-creator-single-fan-ai-workstation-graphics-card"
+    },
+    {
+      "amount": 9334,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:11:18Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "Sapphire AI PRO Radeon AI Pro R9700 32358-01-20G 32GB 256-bit GDDR6 PCI Express 5.0 x16 Graphics Card（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/sapphire-tech-32358-01-20g-radeon-ai-pro-r9700-32gb-graphics-card/p/N82E16814202462"
+    }
+  ],
+  "observed_at": "2026-08-31T21:07:10Z",
+  "product": {
+    "category": "gpu",
+    "id": "radeon-ai-pro-r9700",
+    "name": "Radeon AI Pro r9700"
+  },
+  "provenance": {
+    "scanner": "https://claude.ai/code/routines",
+    "snapshot_generated_at": "2026-08-31T21:07:10Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 1,
+    "listing_count": 3,
+    "lowest_new": 9334,
+    "lowest_refurbished": null,
+    "lowest_used": null,
+    "retailer_count": 3
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}

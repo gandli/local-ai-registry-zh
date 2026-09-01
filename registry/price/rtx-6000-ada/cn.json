@@ -1,0 +1,63 @@
+{
+  "hardware": [
+    {
+      "id": "rtx-6000-ada-48gb",
+      "match_scope": "family"
+    }
+  ],
+  "id": "rtx-6000-ada--cn",
+  "observations": [
+    {
+      "amount": 52199,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:09:51Z",
+      "quantity": null,
+      "retailer": "参考换算 · bhphotovideo",
+      "title": "PNY NVIDIA RTX 6000 Ada Generation Graphics Card（参考换算，待中国零售商直采）",
+      "url": "https://www.bhphotovideo.com/c/product/1753962-REG/pny_vcnrtx6000ada_pb_rtx_6000_ada_generation.html"
+    },
+    {
+      "amount": 63902,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": null,
+      "observed_at": "2026-08-31T21:07:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "PNY RTX 6000 Ada VCNRTX6000ADA-PB 48GB 384-bit GDDR6 PCI Express 4.0 x16 Graphics Card（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/pny-technologies-inc-vcnrtx6000ada-pb-rtx-6000-ada-48gb-graphics-card/p/N82E16814133886"
+    }
+  ],
+  "observed_at": "2026-08-31T21:07:10Z",
+  "product": {
+    "category": "gpu",
+    "id": "rtx-6000-ada",
+    "name": "RTX 6000 ada"
+  },
+  "provenance": {
+    "scanner": "https://claude.ai/code/routines",
+    "snapshot_generated_at": "2026-08-31T21:07:10Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 1,
+    "listing_count": 2,
+    "lowest_new": 52199,
+    "lowest_refurbished": null,
+    "lowest_used": null,
+    "retailer_count": 2
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}

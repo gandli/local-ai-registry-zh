@@ -1,0 +1,52 @@
+{
+  "hardware": [
+    {
+      "id": "rtx-3090-ti-24gb",
+      "match_scope": "family"
+    }
+  ],
+  "id": "rtx-3090-ti--cn",
+  "observations": [
+    {
+      "amount": 15760,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:11:03Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "MSI Gaming GeForce RTX 3090 Ti 24GB GDDR6X PCI Express 4.0 SLI Support ATX Graphics Card RTX 3090 TI GAMING X TRIO 24G（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/p/pl?d=rtx+3090+ti"
+    }
+  ],
+  "observed_at": "2026-08-31T12:11:03Z",
+  "product": {
+    "category": "gpu",
+    "id": "rtx-3090-ti",
+    "name": "RTX 3090 ti"
+  },
+  "provenance": {
+    "scanner": "https://github.com/openai/codex",
+    "snapshot_generated_at": "2026-08-31T16:20:00Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 1,
+    "listing_count": 1,
+    "lowest_new": 15760,
+    "lowest_refurbished": null,
+    "lowest_used": null,
+    "retailer_count": 1
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}

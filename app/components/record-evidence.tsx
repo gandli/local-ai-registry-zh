@@ -21,6 +21,8 @@ function number(value: unknown): number | null {
   return typeof value === "number" && Number.isFinite(value) ? value : null
 }
 
+const EVID_STATUS: Record<string,string> = { accepted: "已采纳", rejected: "已拒绝", validated: "已验证", candidate: "候选" }
+function statusLabel(v: string): string { return EVID_STATUS[v] ?? v }
 function formatRate(value: number | null): string {
   return value === null ? "—" : value.toLocaleString(undefined, { maximumFractionDigits: 1 })
 }
@@ -57,7 +59,7 @@ function evidenceFromRecord(record: Record<string, unknown>): EvidenceRow[] {
 function benchmarkRows(record: Record<string, unknown>): Array<{ key: string; model: string; score: string }> {
   return asRows(record.rows).slice(0, 24).map((row, index) => ({
     key: `${String(row.root ?? row.model ?? index)}:${index}`,
-    model: String(row.root ?? row.model ?? row.name ?? "Unknown"),
+    model: String(row.root ?? row.model ?? row.name ?? "未知"),
     score: number(row.score) === null ? "—" : String(number(row.score)),
   }))
 }
@@ -67,10 +69,10 @@ export function RecordEvidence({ collection, record }: { collection: string; rec
     const rows = benchmarkRows(record)
     if (rows.length === 0) return null
     return (
-      <section aria-label="Leaderboard scores" className="record-evidence">
-        <p className="eyebrow">Scores</p>
+      <section aria-label="排行榜分数" className="record-evidence">
+        <p className="eyebrow">分数</p>
         <table className="flag-table">
-          <thead><tr><th>Model</th><th>Score</th></tr></thead>
+          <thead><tr><th>模型</th><th>分数</th></tr></thead>
           <tbody>
             {rows.map((row) => (
               <tr key={row.key}><td>{row.model}</td><td>{row.score}</td></tr>
@@ -85,18 +87,18 @@ export function RecordEvidence({ collection, record }: { collection: string; rec
   const rows = evidenceFromRecord(record)
   if (rows.length === 0) return null
   return (
-    <section aria-label="Measured speed" className="record-evidence">
-      <p className="eyebrow">Measured speed</p>
+    <section aria-label="实测速度" className="record-evidence">
+      <p className="eyebrow">实测速度</p>
       <table className="flag-table">
         <thead>
           <tr>
-            <th>Concurrency</th>
-            <th>Context</th>
-            <th>Prefill</th>
-            <th>Decode</th>
-            <th>TTFT ms</th>
-            <th>Status</th>
-            {collection === "recipes" && <th>Sweep</th>}
+            <th>并发</th>
+            <th>上下文</th>
+            <th>预填充 tok/s</th>
+            <th>解码 tok/s（每流）</th>
+            <th>首字延迟 ms</th>
+            <th>状态</th>
+            {collection === "recipes" && <th>测试</th>}
           </tr>
         </thead>
         <tbody>
@@ -107,7 +109,7 @@ export function RecordEvidence({ collection, record }: { collection: string; rec
               <td>{formatRate(row.prefill)}</td>
               <td>{formatRate(row.decode)}</td>
               <td>{formatRate(row.ttft)}</td>
-              <td>{row.status || "—"}</td>
+              <td>{row.status ? statusLabel(row.status) : "—"}</td>
               {collection === "recipes" && (
                 <td>{row.sweepId ? <Link href={`/speed-sweep/${row.sweepId}`}>{row.sweepId}</Link> : "—"}</td>
               )}

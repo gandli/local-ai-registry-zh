@@ -1,0 +1,52 @@
+{
+  "hardware": [
+    {
+      "id": "rtx-3060-12gb",
+      "match_scope": "family"
+    }
+  ],
+  "id": "rtx-3060--cn",
+  "observations": [
+    {
+      "amount": 3590,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:11:03Z",
+      "quantity": 4,
+      "retailer": "参考换算 · microcenter",
+      "title": "ASUS NVIDIA GeForce RTX 3060 Dual V2 Overclocked Dual-Fan 12GB GDDR6 PCIe 4.0 Graphics Card（参考换算，待中国零售商直采）",
+      "url": "https://www.microcenter.com/product/639235/asus-nvidia-geforce-rtx-3060-dual-v2-overclocked-dual-fan-12gb-gddr6-pcie-40-graphics-card?storeid=185"
+    }
+  ],
+  "observed_at": "2026-08-31T12:11:03Z",
+  "product": {
+    "category": "gpu",
+    "id": "rtx-3060",
+    "name": "RTX 3060"
+  },
+  "provenance": {
+    "scanner": "https://github.com/openai/codex",
+    "snapshot_generated_at": "2026-08-31T16:20:00Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 1,
+    "listing_count": 1,
+    "lowest_new": 3590,
+    "lowest_refurbished": null,
+    "lowest_used": null,
+    "retailer_count": 1
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}

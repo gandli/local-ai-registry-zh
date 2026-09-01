@@ -1,10 +1,12 @@
 import Link from "next/link"
 
+import { REGION_LABELS } from "@/app/lib/catalog"
 import { getHardwareMarket } from "@/lib/registry"
 
 function money(amount: number | null, currency: string): string {
   if (amount === null) return "—"
-  return `${currency} ${amount.toLocaleString("en-US", { maximumFractionDigits: 0 })}`
+  const symbol = { CNY: "¥", USD: "$", EUR: "€", GBP: "£", JPY: "¥", PLN: "zł " }[currency] ?? `${currency} `
+  return `${symbol}${amount.toLocaleString("zh-CN", { maximumFractionDigits: 0 })}`
 }
 
 function day(value: string): string {
@@ -15,31 +17,30 @@ export function HardwareMarket({ hardwareId }: { hardwareId: string }) {
   const market = getHardwareMarket(hardwareId)
   if (market.length === 0) return null
   return (
-    <section aria-label="Current market prices" className="record-evidence">
-      <p className="eyebrow">Current market</p>
+    <section aria-label="当前市场价格" className="record-evidence">
+      <p className="eyebrow">市场价格</p>
       <p className="trust-note">
-        Lowest live retailer listings per region, in native currency, from the market price collection. Each row links
-        to the underlying observations with retailer and URL.
+        各地区最新零售商报价，以当地货币显示。每行链接到底层观察记录（含零售商与直达链接）。CN 标价为美区报价按参考汇率换算的占位数据，非中国本地零售商实价。
       </p>
       <table className="flag-table">
         <thead>
           <tr>
-            <th>Region</th>
-            <th>Lowest new</th>
-            <th>Refurbished</th>
-            <th>Used</th>
-            <th>Listings</th>
-            <th>Observed</th>
+            <th>区域</th>
+            <th>最低全新</th>
+            <th>翻新</th>
+            <th>二手</th>
+            <th>在售数</th>
+            <th>观察日期</th>
           </tr>
         </thead>
         <tbody>
           {market.map((row) => (
             <tr key={row.record_id}>
-              <td><Link href={`/prices/${row.record_id}`}>{row.region}</Link></td>
+              <td><Link href={`/prices/${row.record_id}`}>{REGION_LABELS[row.region] ?? row.region}</Link></td>
               <td>{money(row.lowest_new, row.currency)}</td>
               <td>{money(row.lowest_refurbished, row.currency)}</td>
               <td>{money(row.lowest_used, row.currency)}</td>
-              <td>{row.listing_count.toLocaleString("en-US")} · {row.retailer_count.toLocaleString("en-US")} retailers</td>
+              <td>{row.listing_count.toLocaleString("en-US")} · {row.retailer_count.toLocaleString("en-US")} 家零售商</td>
               <td>{day(row.observed_at)}</td>
             </tr>
           ))}

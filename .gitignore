@@ -13,3 +13,7 @@ __pycache__/
 
 .claude/
 .vercel
+
+AGENTS.md
+CLAUDE.md
+hermes-audit-findings.json

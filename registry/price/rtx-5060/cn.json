@@ -1,0 +1,63 @@
+{
+  "hardware": [
+    {
+      "id": "rtx-5060-8gb",
+      "match_scope": "family"
+    }
+  ],
+  "id": "rtx-5060--cn",
+  "observations": [
+    {
+      "amount": 3303,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:11:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "GIGABYTE WINDFORCE GeForce RTX 5060 8GB GDDR7（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/p/pl?N=100007709+601484994+50001314"
+    },
+    {
+      "amount": 3375,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-31T12:11:10Z",
+      "quantity": null,
+      "retailer": "参考换算 · newegg",
+      "title": "MSI SHADOW GeForce RTX 5060 8GB GDDR7 2X OC（参考换算，待中国零售商直采）",
+      "url": "https://www.newegg.com/p/pl?N=100007709+8000+600494828+601484994"
+    }
+  ],
+  "observed_at": "2026-08-31T12:11:10Z",
+  "product": {
+    "category": "gpu",
+    "id": "rtx-5060",
+    "name": "RTX 5060"
+  },
+  "provenance": {
+    "scanner": "https://github.com/openai/codex",
+    "snapshot_generated_at": "2026-08-31T16:20:00Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 2,
+    "listing_count": 2,
+    "lowest_new": 3303,
+    "lowest_refurbished": null,
+    "lowest_used": null,
+    "retailer_count": 1
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}

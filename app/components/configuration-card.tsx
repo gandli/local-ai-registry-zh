@@ -89,12 +89,12 @@ export function configurationFromRecipe(recipe: Record<string, unknown>, engineN
       ? (source as { url: string }).url
       : null
   const titles: Record<string, string> = {
-    docker: "Docker configuration",
-    "docker-compose": "Compose configuration",
-    native: "Native configuration",
-    script: "Script configuration",
-    controller: "Controller configuration",
-    reference: "Observed configuration",
+    docker: "Docker 配置",
+    "docker-compose": "Compose 配置",
+    native: "原生配置",
+    script: "脚本配置",
+    controller: "控制器配置",
+    reference: "参考配置",
   }
   const status = typeof value(recipe, "status") === "string" ? String(value(recipe, "status")) : "candidate"
   const registryMeta = (value(recipe, "registry") as Record<string, unknown> | undefined) ?? {}
@@ -147,7 +147,7 @@ function FlagTable({ tokens }: { tokens: string[] }) {
   return (
     <table className="flag-table">
       <thead>
-        <tr><th>Flag</th><th>Value</th></tr>
+        <tr><th>参数</th><th>值</th></tr>
       </thead>
       <tbody>
         {rows.map(([flag, item], index) => (
@@ -161,9 +161,10 @@ function FlagTable({ tokens }: { tokens: string[] }) {
   )
 }
 
+const KIND_ZH: Record<string,string> = { "docker": "Docker", "docker-compose": "Compose", "native": "原生", "script": "脚本", "controller": "控制器", "reference": "参考" }
 export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
-  const runtime = config.hasContainer ? "Container" : config.kind === "reference" ? "Evidence only" : "No container"
-  const trust = config.launchable ? "Validated launch contract" : "Candidate evidence — not a Run contract"
+  const runtime = config.hasContainer ? "容器" : config.kind === "reference" ? "仅参考" : "无容器"
+  const trust = config.launchable ? "已验证的可复现启动配置" : "候选证据——不含可执行启动配置"
   const argv = config.steps.length > 0 ? null : config.arguments
   const showFlags = config.fidelity !== "lossy"
   const empty = !config.image && !config.arguments.length && !config.steps.length && !config.endpoint && !Object.keys(config.environment).length && !config.notes.length && config.fidelity !== "lossy"
@@ -175,28 +176,28 @@ export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
         <p className="config-runtime">
           <span data-runtime={config.hasContainer ? "docker" : config.kind}>{runtime}</span>
           {" · "}
-          <span data-status={config.status}>{config.status}</span>
+          <span data-status={config.status}>{config.status === "validated" ? "已验证" : config.status === "candidate" ? "候选" : config.status}</span>
           {" · "}
-          {config.kind.replace("-", " ")}
+          {KIND_ZH[config.kind] ?? config.kind.replace("-", " ")}
         </p>
         <p className="config-trust">{trust}</p>
       </header>
       <dl>
-        {config.image && <div><dt>Image</dt><dd><code>{config.image}</code></dd></div>}
-        {config.digest && <div><dt>Digest</dt><dd><code>{config.digest}</code></dd></div>}
-        {config.composeFile && <div><dt>Compose file</dt><dd><code>{config.composeFile}</code></dd></div>}
-        {config.ports && <div><dt>Port</dt><dd>{config.ports}</dd></div>}
-        {config.endpoint && <div><dt>Endpoint</dt><dd><code>{config.endpoint}</code></dd></div>}
-        {config.servedModelName && <div><dt>Served model</dt><dd><code>{config.servedModelName}</code></dd></div>}
-        {config.sourceUrl && <div><dt>Source</dt><dd><a href={config.sourceUrl} rel="noreferrer" target="_blank">{config.sourceUrl}</a></dd></div>}
+        {config.image && <div><dt>镜像</dt><dd><code>{config.image}</code></dd></div>}
+        {config.digest && <div><dt>SHA256 摘要</dt><dd><code>{config.digest}</code></dd></div>}
+        {config.composeFile && <div><dt>Compose 文件</dt><dd><code>{config.composeFile}</code></dd></div>}
+        {config.ports && <div><dt>端口</dt><dd>{config.ports}</dd></div>}
+        {config.endpoint && <div><dt>端点</dt><dd><code>{config.endpoint}</code></dd></div>}
+        {config.servedModelName && <div><dt>对外模型名</dt><dd><code>{config.servedModelName}</code></dd></div>}
+        {config.sourceUrl && <div><dt>来源</dt><dd><a href={config.sourceUrl} rel="noreferrer" target="_blank">{config.sourceUrl}</a></dd></div>}
       </dl>
       {config.fidelity === "lossy" && (
-        <p className="config-empty">Source command could not be tokenized faithfully. The original string stays in metadata. This does not satisfy promotion.</p>
+        <p className="config-empty">源命令无法忠实分词，原始字符串保留在 metadata 中，不满足推广条件。</p>
       )}
       {config.steps.length > 0 && (
         <div className="config-block">
-          <h4>Observed source tokens</h4>
-          <p>Mechanical split of the source command. Unverified against the engine CLI. The registry does not offer Run for this recipe.</p>
+          <h4>观察到的源命令</h4>
+          <p>对源命令的机械拆分，未经引擎 CLI 验证。模型库不为该部署方案提供运行操作。</p>
           <ol className="config-steps">
             {config.steps.map((step, index) => (
               <li key={index}><Argv tokens={step} /></li>
@@ -206,8 +207,8 @@ export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
       )}
       {argv && argv.length > 0 && (
         <div className="config-block">
-          <h4>{config.launchable ? "Launch arguments" : "Observed source tokens"}</h4>
-          {!config.launchable && <p>Mechanical split of the source command. Unverified against the engine CLI. The registry does not offer Run for this recipe.</p>}
+          <h4>{config.launchable ? "启动参数" : "观察到的源命令"}</h4>
+          {!config.launchable && <p>对源命令的机械拆分，未经引擎 CLI 验证。模型库不为该部署方案提供运行操作。</p>}
           <Argv tokens={argv} />
           {showFlags && <FlagTable tokens={argv} />}
         </div>
@@ -219,10 +220,10 @@ export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
       )}
       {Object.keys(config.environment).length > 0 && (
         <div className="config-block">
-          <h4>Environment</h4>
+          <h4>环境变量</h4>
           <table className="flag-table">
             <thead>
-              <tr><th>Variable</th><th>Value</th></tr>
+              <tr><th>变量</th><th>值</th></tr>
             </thead>
             <tbody>
               {Object.entries(config.environment).map(([key, item]) => (
@@ -237,16 +238,16 @@ export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
       )}
       {config.mounts.length > 0 && (
         <div className="config-block">
-          <h4>Mounts</h4>
+          <h4>挂载</h4>
           <table className="flag-table">
             <thead>
-              <tr><th>Source</th><th>Target</th></tr>
+              <tr><th>源路径</th><th>目标路径</th></tr>
             </thead>
             <tbody>
               {config.mounts.map((mount, index) => (
                 <tr key={`${mount.source ?? index}`}>
                   <td><code>{mount.source}</code></td>
-                  <td><code>{mount.target}</code>{mount.read_only ? " (read-only)" : ""}</td>
+                  <td><code>{mount.target}</code>{mount.read_only ? "（只读）" : ""}</td>
                 </tr>
               ))}
             </tbody>
@@ -255,12 +256,12 @@ export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
       )}
       {config.notes.length > 0 && (
         <div className="config-block">
-          <h4>Source notes</h4>
+          <h4>运行说明</h4>
           {config.notes.map((note, index) => <p key={index}>{note}</p>)}
         </div>
       )}
       {empty && (
-        <p className="config-empty">No tokenized launch fields. This is measured or documented compatibility, not a Docker launch.</p>
+        <p className="config-empty">无分词启动字段。这里只有实测或源码记录的兼容性，不含可执行的 Docker 启动配置。</p>
       )}
     </section>
   )

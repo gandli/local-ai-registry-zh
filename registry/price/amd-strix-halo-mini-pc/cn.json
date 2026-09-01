@@ -1,0 +1,96 @@
+{
+  "hardware": [
+    {
+      "id": "ryzen-ai-max-plus-395-128gb",
+      "match_scope": "family"
+    }
+  ],
+  "id": "amd-strix-halo-mini-pc--cn",
+  "observations": [
+    {
+      "amount": 18661,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-27T11:28:59.877Z",
+      "quantity": null,
+      "retailer": "参考换算 · minisforum",
+      "title": "MINISFORUM MS-S1 MAX 64GB Local AI Pilot Edition（参考换算，待中国零售商直采）",
+      "url": "https://store.minisforum.com/products/minisforum-ms-s1-max-64gb"
+    },
+    {
+      "amount": 18661,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-27T11:28:59.877Z",
+      "quantity": null,
+      "retailer": "参考换算 · minisforum",
+      "title": "MINISFORUM N5 MAX AI NAS（参考换算，待中国零售商直采）",
+      "url": "https://store.minisforum.com/products/minisforum-n5-max-ai-nas"
+    },
+    {
+      "amount": 25841,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-27T11:28:59.877Z",
+      "quantity": null,
+      "retailer": "参考换算 · minisforum",
+      "title": "MINISFORUM N5 MAX AI NAS（参考换算，待中国零售商直采）",
+      "url": "https://store.minisforum.com/products/minisforum-n5-max-ai-nas"
+    },
+    {
+      "amount": 27277,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": true,
+      "observed_at": "2026-08-27T11:28:59.877Z",
+      "quantity": null,
+      "retailer": "参考换算 · minisforum",
+      "title": "MINISFORUM MS-S1 MAX 128GB Max AI Compute Edition（参考换算，待中国零售商直采）",
+      "url": "https://store.minisforum.com/products/minisforum-ms-s1-max-mini-pc"
+    },
+    {
+      "amount": 25841,
+      "condition": "new",
+      "currency": "CNY",
+      "in_stock": null,
+      "observed_at": "2026-08-31T11:49:17.000Z",
+      "quantity": null,
+      "retailer": "参考换算 · peladn",
+      "title": "Peladn YO2 AMD Ryzen AI Max+ 395 Mini PC（参考换算，待中国零售商直采）",
+      "url": "https://peladn.us/products/peladn-yo2-ai-395"
+    }
+  ],
+  "observed_at": "2026-08-31T11:49:17.000Z",
+  "product": {
+    "category": "amd",
+    "id": "amd-strix-halo-mini-pc",
+    "name": "Ryzen AI Max+ 395 Mini PC"
+  },
+  "provenance": {
+    "scanner": "https://github.com/openai/codex",
+    "snapshot_generated_at": "2026-08-31T16:12:00.000Z",
+    "source_error_count": 0
+  },
+  "region": {
+    "code": "CN",
+    "currency": "CNY",
+    "name": "中国大陆"
+  },
+  "schema_version": "local-ai-registry/v1",
+  "summary": {
+    "in_stock_count": 4,
+    "listing_count": 5,
+    "lowest_new": 18661,
+    "lowest_refurbished": null,
+    "lowest_used": null,
+    "retailer_count": 2
+  },
+  "verification": {
+    "method": "derived from US market via 7.18 reference rate; pending real CNY retailer scanner (ZOL/JD)",
+    "rejected_observations": 0,
+    "state": "candidate"
+  }
+}

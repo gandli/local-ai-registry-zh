@@ -1,3 +1,5 @@
+export const REGION_LABELS: Record<string, string> = { CN: "中国大陆", DE: "德国", GB: "英国", JP: "日本", PL: "波兰", US: "美国" }
+
 export type Topic = "recipes" | "hardware" | "models" | "prices" | "benchmark"
 
 export type TopicSpec = {
@@ -8,21 +10,21 @@ export type TopicSpec = {
 }
 
 export const TOPICS: TopicSpec[] = [
-  { key: "recipes", label: "Recipes", countKey: "recipe", description: "One artifact × hardware × engine unit. Validated rows are launch-safe; measured speed sweeps attach to each recipe as evidence." },
-  { key: "hardware", label: "Hardware", countKey: "hardware", description: "Accelerator specifications connected to compatible models, recipes, and regional prices." },
-  { key: "models", label: "Models", countKey: "model", description: "Canonical models connected to artifacts, supported hardware, and recipes." },
-  { key: "prices", label: "Prices", countKey: "price", description: "Fresh regional listing observations in native currency. Candidate matches remain inspectable." },
-  { key: "benchmark", label: "Leaderboards", countKey: "benchmark", description: "Scraped public quality scores from GitHub Pages leaderboards such as Terminal-Bench 2.1. These are not local speed measurements." },
+  { key: "recipes", label: "部署方案", countKey: "recipe", description: "模型文件 × 硬件 × 引擎的兼容单元。已验证条目附可复现启动配置，速度基于实测数据标注。" },
+  { key: "hardware", label: "硬件", countKey: "hardware", description: "加速器规格，关联模型、部署方案和区域价格。" },
+  { key: "models", label: "模型", countKey: "model", description: "标准模型，关联模型文件、支持的硬件和部署方案。" },
+  { key: "prices", label: "价格", countKey: "price", description: "各地区最新零售商报价，以当地货币显示，含候选匹配。" },
+  { key: "benchmark", label: "排行榜", countKey: "benchmark", description: "来自 GitHub Pages 排行榜（如 Terminal-Bench 2.1）的公开排行榜分数，不含本地速度测量。" },
 ]
 
 const COLLECTION_LABELS: Record<string, string> = {
-  hardware: "Hardware",
-  "model-instances": "Model instance",
-  models: "Model",
-  prices: "Regional market price",
-  recipes: "Recipe",
-  benchmark: "Leaderboard",
-  "speed-sweep": "Speed sweep",
+  hardware: "硬件",
+  "model-instances": "模型文件",
+  models: "模型",
+  prices: "价格",
+  recipes: "部署方案",
+  benchmark: "排行榜",
+  "speed-sweep": "速度实测",
 }
 
 const COLLECTION_TOPICS: Record<string, Topic> = {

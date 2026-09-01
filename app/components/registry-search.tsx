@@ -17,12 +17,12 @@ type RegistrySearchProps = {
 }
 
 const SEARCH_LABELS: Record<string, string> = {
-  hardware: "Search hardware",
-  models: "Search models",
-  prices: "Search price observations",
-  recipes: "Find a model or machine",
-  benchmarks: "Search leaderboard scores",
-  "speed-sweep": "Search measured speed sweeps",
+  hardware: "搜索硬件",
+  models: "搜索模型",
+  prices: "搜索市场价格",
+  recipes: "搜索模型或硬件",
+  benchmarks: "搜索排行榜分数",
+  "speed-sweep": "搜索实测速度数据",
 }
 
 export function RegistrySearch({ filters, query, topic }: RegistrySearchProps) {
@@ -53,7 +53,7 @@ export function RegistrySearch({ filters, query, topic }: RegistrySearchProps) {
   }
 
   const searchTopic = topic
-  const searchLabel = SEARCH_LABELS[searchTopic] ?? "Search the registry"
+  const searchLabel = SEARCH_LABELS[searchTopic] ?? "搜索模型库"
 
   return (
     <form
@@ -96,7 +96,7 @@ export function RegistrySearch({ filters, query, topic }: RegistrySearchProps) {
           ))}
         </div>
       )}
-      <noscript><button type="submit">Search</button></noscript>
+      <noscript><button type="submit">搜索</button></noscript>
     </form>
   )
 }
