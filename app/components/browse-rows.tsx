@@ -112,7 +112,7 @@ export function RecipeRows({ by, data, state }: { by: "hardware" | "model"; data
         const tags: RowTag[] = [
           { label: validation === "validated" ? "已验证" : "候选", name: "validation", value: validation },
           { label: result.recipe.engine.name, name: "engine", value: result.recipe.engine.name },
-          { label: runtime === "docker" ? "docker" : runtime === "native" ? "无 docker" : "仅证据", name: "runtime", value: runtime },
+          { label: runtime === "docker" ? "docker" : runtime === "native" ? "无 docker" : "仅参考", name: "runtime", value: runtime },
           { label: result.speed_evidence.available ? "已实测" : "未实测", name: "evidence", value: String(result.speed_evidence.available) },
           { label: `${result.hardware.memory.vram_gb} GB+`, name: "min_vram_gb", value: String(result.hardware.memory.vram_gb) },
         ]
@@ -133,7 +133,7 @@ export function RecipeRows({ by, data, state }: { by: "hardware" | "model"; data
             className="recipe-browser-row"
             href={recordHref("recipes", result.id)}
             key={result.id}
-            label={`打开 ${result.model.name} 配方`}
+            label={`打开 ${result.model.name} 部署方案`}
             state={state}
             status={validation}
             tags={tags}
@@ -195,7 +195,7 @@ export function HardwareRows({ data, state }: { data: Hardware[]; state: URLSear
           { label: hardware.accelerator_backend, name: "backend", value: hardware.accelerator_backend },
           { label: `${hardware.memory.vram_gb} GB+`, name: "min_vram_gb", value: String(hardware.memory.vram_gb) },
           ...(hasPrices ? [{ label: "有报价", name: "priced_only", value: "true" }] : []),
-          { label: recipes > 0 ? `${recipes} 个配方` : "暂无配方", name: "has_recipes", value: recipes > 0 ? "true" : "false" },
+          { label: recipes > 0 ? `${recipes} 个部署方案` : "暂无部署方案", name: "has_recipes", value: recipes > 0 ? "true" : "false" },
         ]
         return (
           <BrowserRow
@@ -209,7 +209,7 @@ export function HardwareRows({ data, state }: { data: Hardware[]; state: URLSear
             <span className="row-primary"><strong>{hardware.name}</strong><small>{hardware.id}</small></span>
             <span><strong>{hardware.vendor}</strong><small>{hardware.kind}</small></span>
             <span><strong>{hardware.memory.vram_gb} GB</strong><small>{hardware.memory.vram_type ?? "内存类型未知"}</small></span>
-            <span><strong>{recipes.toLocaleString()}</strong><small>配方</small></span>
+            <span><strong>{recipes.toLocaleString()}</strong><small>部署方案</small></span>
           </BrowserRow>
         )
       })}

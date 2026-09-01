@@ -44,8 +44,8 @@ export function RecordBody({
         <>
           <p className="trust-note">
             {recipeIsLaunchable(record)
-              ? "已验证：产物版本、运行时镜像均已固定，证据已接受。这是一份可执行启动契约。"
-              : "候选：有兼容性或速度证据，但登记簿在满足推广要求前不提供运行操作。"}
+              ? "已验证：模型文件版本、运行时镜像均已固定，证据已接受。这是一份可执行启动契约。"
+              : "候选：有兼容性或速度证据，但模型库在满足推广要求前不提供运行操作。"}
           </p>
           <ConfigurationCard config={config} />
           <LaunchCommand recipe={record as never} />

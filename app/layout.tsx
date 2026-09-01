@@ -9,8 +9,8 @@ const notoSans = Noto_Sans_SC({ subsets: ["latin", "latin-ext"], variable: "--fo
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
 
 export const metadata: Metadata = {
-  title: "本地 AI 模型登记簿",
-  description: "搜索本地模型产物、硬件兼容性、启动配方、公开排行榜分数和实测速度数据。",
+  title: "本地 AI 模型库",
+  description: "搜索本地模型文件、硬件兼容性、部署方案、公开排行榜分数和实测速度数据。",
 }
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
@@ -25,18 +25,18 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
               <circle cx="15" cy="15" fill="currentColor" r="2.6" />
               <path d="M15 10.2v2.2M15 17.6v2.2M10.2 15h2.2M17.6 15h2.2" stroke="currentColor" strokeLinecap="round" strokeWidth="1.4" />
             </svg>
-            <span>本地 AI 登记簿</span>
+            <span>本地 AI 模型库</span>
           </Link>
           <nav aria-label="Primary navigation">
             <Link href="/compare">对比</Link>
             <Link href="/api/v1">API</Link>
-            <a href="https://github.com/0xSero/local-ai-registry#read-only-api">文档</a>
+            <a href="https://github.com/gandli/local-ai-registry-zh">源码</a>
           </nav>
         </header>
         {children}
         <footer>
-          <p>登记簿记录按原始内容显示。未知字段保持未知。</p>
-          <a href="/api/v1/index">标准化索引</a>
+          <p>数据按原始内容显示，未知字段保持未知。</p>
+          <a href="/api/v1/index">数据索引</a>
         </footer>
       </body>
     </html>

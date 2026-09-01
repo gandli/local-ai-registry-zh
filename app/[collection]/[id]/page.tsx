@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: DetailProps): Promise<Metadat
   if (!isCollection(collection)) return { title: "记录未找到" }
   const detail = getEntityDetail(collection, id)
   if (!detail) return { title: "记录未找到" }
-  return { title: `${recordTitle(detail, id)} · 本地 AI 模型登记簿` }
+  return { title: `${recordTitle(detail, id)} · 本地 AI 模型库` }
 }
 
 export default async function DetailPage({ params }: DetailProps) {
@@ -46,7 +46,7 @@ export default async function DetailPage({ params }: DetailProps) {
     <main className="detail-page">
       <CollectionNav current={topic} />
       <nav className="breadcrumbs" aria-label="面包屑">
-        <Link href="/">登记簿</Link>
+        <Link href="/">模型库</Link>
         <span>/</span>
         <Link href={collectionBrowse}>{label}</Link>
         <span>/</span>
@@ -59,7 +59,7 @@ export default async function DetailPage({ params }: DetailProps) {
         <div className="detail-actions">
           <a href={`/api/v1/${collection}/${id}`}>JSON API</a>
           {recipeSearch ? (
-            <Link href={`/?topic=recipes&q=${encodeURIComponent(title)}`}>查找兼容配方</Link>
+            <Link href={`/?topic=recipes&q=${encodeURIComponent(title)}`}>查找兼容部署方案</Link>
           ) : (
             <Link href={`${collectionBrowse}&q=${encodeURIComponent(title)}`}>返回{label}搜索</Link>
           )}

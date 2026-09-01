@@ -6,7 +6,7 @@ import { hardwareComparison, type HardwareComparisonRow } from "@/lib/registry"
 
 export const dynamic = "force-dynamic"
 
-export const metadata: Metadata = { title: "硬件对比 · 本地 AI 模型登记簿" }
+export const metadata: Metadata = { title: "硬件对比 · 本地 AI 模型库" }
 
 type SortKey = "name" | "vram" | "bandwidth" | "fp16" | "fp8" | "fp4" | "int8" | "price" | "recipes"
 
@@ -19,7 +19,7 @@ const COLUMNS: Array<{ key: SortKey; label: string }> = [
   { key: "fp4", label: "FP4 TFLOPS" },
   { key: "int8", label: "INT8 TOPS" },
   { key: "price", label: "最低全新（美元）" },
-  { key: "recipes", label: "配方数" },
+  { key: "recipes", label: "部署方案数" },
 ]
 
 function metric(row: HardwareComparisonRow, key: SortKey): number | string | null {
@@ -71,7 +71,7 @@ export default async function ComparePage({ searchParams }: { searchParams: Prom
           <span className="mono-label">分类 / 对比</span>
           <h1>硬件对比</h1>
           <p className="topic-description">
-            所有加速器横向对比：显存、厂商公布的算力、最低在售美元报价，以及登记簿收录的启动配方数量。点击列标题即可按该项排序；* 表示厂商仅公开结构化稀疏算力、未公开稠密数值。
+            所有加速器横向对比：显存、厂商公布的算力、最低在售美元报价，以及模型库收录的部署方案数量。点击列标题即可按该项排序；* 表示厂商仅公开结构化稀疏算力、未公开稠密数值。
           </p>
         </div>
         <span className="topic-total">{rows.length.toLocaleString("en-US")} 台设备</span>

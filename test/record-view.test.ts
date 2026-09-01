@@ -9,7 +9,7 @@ test("collection catalog maps path segments onto browse topics", () => {
   assert.equal(isTopic("recipes"), true)
   assert.equal(isTopic("model-instances"), false)
   assert.equal(isCollection("model-instances"), true)
-  assert.equal(collectionLabel("recipes"), "配方")
+  assert.equal(collectionLabel("recipes"), "部署方案")
   assert.equal(collectionTopic("model-instances"), "recipes")
   assert.equal(topicHref("hardware", "rtx"), "/?topic=hardware&q=rtx")
   assert.equal(collectionHref("prices"), "/?topic=prices")

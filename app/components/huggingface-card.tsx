@@ -7,7 +7,7 @@ type HuggingFaceFields = {
 }
 
 function reasonText(reason: HuggingFaceFields["reason"]): string {
-  if (!reason) return "身份由登记簿记录。"
+  if (!reason) return "身份由模型库记录。"
   if (typeof reason === "string") return reason.replaceAll("-", " ")
   return `${reason.code.replaceAll("-", " ")}: ${reason.detail}`
 }

@@ -53,7 +53,7 @@ export function RegistrySearch({ filters, query, topic }: RegistrySearchProps) {
   }
 
   const searchTopic = topic
-  const searchLabel = SEARCH_LABELS[searchTopic] ?? "搜索登记簿"
+  const searchLabel = SEARCH_LABELS[searchTopic] ?? "搜索模型库"
 
   return (
     <form

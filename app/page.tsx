@@ -149,7 +149,7 @@ export default async function Home({ searchParams }: PageProps) {
       { label: "任意运行方式", value: "" },
       { label: "Docker / compose", value: "docker" },
       { label: "原生 / 无 docker", value: "native" },
-      { label: "仅证据", value: "reference" },
+      { label: "仅参考", value: "reference" },
     ] },
     { label: "证据", name: "evidence", value: value("evidence"), options: facetOptions(["true", "false"], "任意证据", (item) => item === "true" ? "已附实测速度" : "无实测速度") },
     { label: "上下文", name: "min_context", value: value("min_context"), options: facetOptions(["32768", "65536", "131072", "262144", "499968"], "任意长度", (item) => `至少 ${Math.round(Number(item) / 1024)}K tokens`) },
@@ -162,7 +162,7 @@ export default async function Home({ searchParams }: PageProps) {
           { label: "后端", name: "backend", value: value("backend"), options: facetOptions(facets.hardware.backend, "任意后端") },
           { label: "显存", name: "min_vram_gb", value: value("min_vram_gb"), options: facetOptions(facets.hardware.vram_gb, "任意显存", (item) => `至少 ${item} GB`) },
           { label: "价格", name: "priced_only", value: value("priced_only"), options: facetOptions(["true"], "全部硬件", () => "仅看有报价") },
-          { label: "配方", name: "has_recipes", value: value("has_recipes"), options: facetOptions(["true", "false"], "全部硬件", (item) => item === "true" ? "有配方" : "暂无配方") },
+          { label: "部署方案", name: "has_recipes", value: value("has_recipes"), options: facetOptions(["true", "false"], "全部硬件", (item) => item === "true" ? "有部署方案" : "暂无部署方案") },
         ]
       : topic === "models"
         ? [
@@ -187,9 +187,9 @@ export default async function Home({ searchParams }: PageProps) {
 
       {!topic ? (
         <>
-          <header className="overview-heading"><span className="mono-label">只读 / 源数据支撑</span><h1>登记簿索引</h1></header>
-          <section className="overview-search" aria-label="搜索登记簿"><RegistrySearch filters={[]} query={query} topic="" /></section>
-          <nav aria-label="登记簿分类计数" className="topic-index">
+          <header className="overview-heading"><span className="mono-label">只读 / 源数据支撑</span><h1>模型库索引</h1></header>
+          <section className="overview-search" aria-label="搜索模型库"><RegistrySearch filters={[]} query={query} topic="" /></section>
+          <nav aria-label="模型库分类计数" className="topic-index">
             {TOPICS.map((item, index) => {
               const count = matchCounts
                 ? matchCounts[item.key]
@@ -202,10 +202,10 @@ export default async function Home({ searchParams }: PageProps) {
             })}
           </nav>
           {query ? (
-            <p className="topic-description">匹配记录保留在各自分类中。公开分数（如 Terminal-Bench 2.1）请看排行榜，实测 tok/s 请看速度测试。</p>
+            <p className="topic-description">匹配记录保留在各自分类中。公开分数（如 Terminal-Bench 2.1）请看排行榜，实测 tok/s 请看速度实测。</p>
           ) : (
             <section className="overview-recipes">
-              <div className="section-heading"><div><span className="mono-label">已验证 / 可启动</span><h2>可安全启动的配方</h2></div><Link href="/?topic=recipes&validation=validated">查看全部</Link></div>
+              <div className="section-heading"><div><span className="mono-label">已验证 / 可启动</span><h2>可安全启动的部署方案</h2></div><Link href="/?topic=recipes&validation=validated">查看全部</Link></div>
               <RecipeRows by="model" data={overviewRecipes.data} state={new URLSearchParams("topic=recipes&by=model&validation=validated")} />
             </section>
           )}

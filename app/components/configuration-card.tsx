@@ -94,7 +94,7 @@ export function configurationFromRecipe(recipe: Record<string, unknown>, engineN
     native: "原生配置",
     script: "脚本配置",
     controller: "控制器配置",
-    reference: "观察到的配置",
+    reference: "参考配置",
   }
   const status = typeof value(recipe, "status") === "string" ? String(value(recipe, "status")) : "candidate"
   const registryMeta = (value(recipe, "registry") as Record<string, unknown> | undefined) ?? {}
@@ -162,7 +162,7 @@ function FlagTable({ tokens }: { tokens: string[] }) {
 }
 
 export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
-  const runtime = config.hasContainer ? "容器" : config.kind === "reference" ? "仅证据" : "无容器"
+  const runtime = config.hasContainer ? "容器" : config.kind === "reference" ? "仅参考" : "无容器"
   const trust = config.launchable ? "已验证的启动契约" : "候选证据 — 非可运行契约"
   const argv = config.steps.length > 0 ? null : config.arguments
   const showFlags = config.fidelity !== "lossy"
@@ -196,7 +196,7 @@ export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
       {config.steps.length > 0 && (
         <div className="config-block">
           <h4>观察到的源命令</h4>
-          <p>对源命令的机械拆分，未经引擎 CLI 验证。登记簿不为该配方提供运行操作。</p>
+          <p>对源命令的机械拆分，未经引擎 CLI 验证。模型库不为该部署方案提供运行操作。</p>
           <ol className="config-steps">
             {config.steps.map((step, index) => (
               <li key={index}><Argv tokens={step} /></li>
@@ -207,7 +207,7 @@ export function ConfigurationCard({ config }: { config: LaunchConfiguration }) {
       {argv && argv.length > 0 && (
         <div className="config-block">
           <h4>{config.launchable ? "启动参数" : "观察到的源命令"}</h4>
-          {!config.launchable && <p>对源命令的机械拆分，未经引擎 CLI 验证。登记簿不为该配方提供运行操作。</p>}
+          {!config.launchable && <p>对源命令的机械拆分，未经引擎 CLI 验证。模型库不为该部署方案提供运行操作。</p>}
           <Argv tokens={argv} />
           {showFlags && <FlagTable tokens={argv} />}
         </div>

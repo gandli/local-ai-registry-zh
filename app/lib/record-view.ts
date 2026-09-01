@@ -25,12 +25,12 @@ const RELATED_CAP = 8
 const RELATION_LABELS: Record<string, string> = {
   hardware: "硬件",
   model: "模型",
-  model_instance: "产物",
-  model_instances: "产物",
+  model_instance: "模型文件",
+  model_instances: "模型文件",
   prices: "价格",
-  recipe: "配方",
-  recipes: "配方",
-  speed_sweep: "速度测试",
+  recipe: "部署方案",
+  recipes: "部署方案",
+  speed_sweep: "速度实测",
 }
 
 const TREE_OMIT = new Set([
@@ -219,7 +219,7 @@ export function recordFacts(collection: string, record: Record<string, unknown>)
   if (collection === "speed-sweep") {
     const rows = Array.isArray(record.rows) ? record.rows.length : null
     return [
-      fact("配方", record.recipe_id, typeof record.recipe_id === "string" ? `/recipes/${record.recipe_id}` : undefined),
+      fact("部署方案", record.recipe_id, typeof record.recipe_id === "string" ? `/recipes/${record.recipe_id}` : undefined),
       fact("测量于", record.measured_at),
       fact("接受于", record.accepted_at),
       fact("数据点数", rows),
